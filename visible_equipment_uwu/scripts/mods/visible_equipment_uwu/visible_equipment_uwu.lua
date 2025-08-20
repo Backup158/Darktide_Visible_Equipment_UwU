@@ -26,12 +26,20 @@ mod.visible_equipment_plugin = {
     },
 }
 
--- Manual override helper
---      Overwrites default offsets for all weapons of a family
+-- ----------
+-- Offsets Manual Override Helper
+-- DESC: Overwrites default offsets for all marks of a weapon family
+-- PARAM:
+--      weapon_id_without_mark; string; "powersword_p1"
+--      offset_slot; string; "butt"
+--      table_for_offset; table; no example because fuck you
+-- ----------
 local function overwrite_offset(weapon_id_without_mark, offset_slot, table_for_offset)
-    -- range: [1, 3]
+    -- Loop over 3 marks
+    --  range: [1, 3]
     for i = 1, 3 do
         local weapon_id = weapon_id_without_mark.."_m"..tostring(i)
+        -- If this mark doesn't exist (doesn't have an offset already), don't try it
         if not mod.visible_equipment_plugin.offsets[weapon_id] then
             return
         end
