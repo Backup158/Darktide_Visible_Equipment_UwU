@@ -11,9 +11,24 @@ local WeaponTemplates = require("scripts/settings/equipment/weapon_templates/wea
 local vector3_box = Vector3Box
 local tostring = tostring
 
+-- ----------
+-- HOOKS
+-- Defining actions for startup
+-- ----------
+function mod.on_all_mods_loaded()
+    mod:info("v"..mod.version.." loaded uwu nya :3")
+
+    local visible_equipment = get_mod("visible_equipment")
+    if not visible_equipment then
+        mod:error("Visible Equipment mod required! The standalone mod, not Extended Weapon Customization")
+    end
+end
+
+-- ----------
 -- Offsets for the base mod to read
 --  This must be filled out BEFORE all mods are loaded
 --  Because that's when the base mod reads this table
+-- ----------
 mod.visible_equipment_plugin = {
     offsets = {
         
@@ -48,10 +63,10 @@ local function overwrite_offset_slot_for_family(weapon_id_without_mark, offset_s
     end
 end
 
--- ####################
--- MY OFFSETS
--- ####################
-local my_offsets_table = {
+-- ########################################
+-- ***** DEFAULT OFFSETS *****
+-- ########################################
+local default_offsets_table = {
     butt = {
         offsets = {
             right = {
@@ -88,10 +103,12 @@ local my_offsets_table = {
 --      Will overwrite below if needed
 -- ----------
 for weapon_id, _ in pairs(WeaponTemplates) do
+    -- Initializing the weapon's table
     mod.visible_equipment_plugin.offsets[weapon_id] = {}
 
-    for offset_slot, _ in pairs(my_offsets_table) do
-        mod.visible_equipment_plugin.offsets[weapon_id][offset_slot] = my_offsets_table[offset_slot].offsets
+    -- Adds all default offsets
+    for offset_slot, _ in pairs(default_offsets_table) do
+        mod.visible_equipment_plugin.offsets[weapon_id][offset_slot] = default_offsets_table[offset_slot].offsets
     end
 end
 
@@ -99,14 +116,14 @@ end
 -- Setting base node for placement and camera preview
 --      Only done once for each slot I add
 -- ----------
-for offset_slot, _ in pairs(my_offsets_table) do
-    mod.visible_equipment_plugin.placements[weapon_id][offset_slot] = my_offsets_table[offset_slot].placements
-    mod.visible_equipment_plugin.placement_camera[weapon_id][offset_slot] = my_offsets_table[offset_slot].placement_camera
+for offset_slot, _ in pairs(default_offsets_table) do
+    mod.visible_equipment_plugin.placements[weapon_id][offset_slot] = default_offsets_table[offset_slot].placements
+    mod.visible_equipment_plugin.placement_camera[weapon_id][offset_slot] = default_offsets_table[offset_slot].placement_camera
 end
 
--- ----------
--- Manual Overrides
--- ----------
+-- ########################################
+-- ***** OFFSETS: MANUAL OVERRIDES *****
+-- ########################################
 overwrite_offset_slot_for_family("powersword_p1", "butt_flip", {
     right = {
         node = "j_hips",
@@ -114,15 +131,3 @@ overwrite_offset_slot_for_family("powersword_p1", "butt_flip", {
         rotation = vector3_box(140, 0, 0),
     },
 })
-
--- ####################
--- HOOKS
--- ####################
-function mod.on_all_mods_loaded()
-    mod:info("v"..mod.version.." loaded uwu nya :3")
-
-    local visible_equipment = get_mod("visible_equipment")
-    if not visible_equipment then
-        mod:error("Visible Equipment mod required! The standalone mod, not Extended Weapon Customization")
-    end
-end
