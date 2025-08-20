@@ -1,40 +1,63 @@
 local mod = get_mod("visible_equipment_uwu")
+mod.version = "1.0.0"
 
+-- ####################
+-- UTILITY/SETUP
+-- ####################
+-- Requirements
+local WeaponTemplates = require("scripts/settings/equipment/weapon_templates/weapon_templates")
+
+-- Performance
 local vector3_box = Vector3Box
 
+-- Offsets for the base mod to read
+--  This must be created BEFORE all mods are loaded
+--  Since that's when the base mod looks for this
 mod.visible_equipment_plugin = {
     offsets = {
-        combataxe_p3_m1 = {
-            butt = {
-                right = {
-                    node = "j_hips",
-                    position = vector3_box(0.005, -0.05, -0.069),
-                    rotation = vector3_box(-10, 0, 90),
-                },
-            },
-            butt_flip = {
-                right = {
-                    node = "j_hips",
-                    position = vector3_box(0.007, -0.05, 0.069),
-                    rotation = vector3_box(170, 0, 90),
-                },
-            },
-        },
+        
     },
     placements = {
-        butt = "hip_back",
-        butt_flip = "hip_back",
+        
     },
     placement_camera = {
-        -- copy of hip_back
+        
+    },
+}
+
+-- ####################
+-- MY OFFSETS
+-- ####################
+for weapon_id, _ in pairs(WeaponTemplates) do
+	mod.visible_equipment_plugin.offsets[weapon_id] = {
         butt = {
-            position = vector3_box(-1.2683889865875244, 2.639409065246582, 1.6318360567092896),
-            rotation = 3.5,
+            right = {
+                node = "j_hips",
+                position = vector3_box(0.005, -0.05, -0.069),
+                rotation = vector3_box(-10, 0, 90),
+            },
         },
-        -- copy of hip_back
         butt_flip = {
-            position = vector3_box(-1.2683889865875244, 2.639409065246582, 1.6318360567092896),
-            rotation = 3.5,
+            right = {
+                node = "j_hips",
+                position = vector3_box(0.007, -0.05, 0.069),
+                rotation = vector3_box(170, 0, 90),
+            },
         },
     }
+end
+mod.visible_equipment_plugin.placements["butt"] = "hip_back"
+mod.visible_equipment_plugin.placements["butt_flip"] = "hip_back"
+
+mod.visible_equipment_plugin.placement_camera["butt"] = {
+    position = vector3_box(-1.2683889865875244, 2.639409065246582, 1.6318360567092896),
+    rotation = 3.5,
 }
+mod.visible_equipment_plugin.placement_camera["butt_flip"] = {
+    position = vector3_box(-1.2683889865875244, 2.639409065246582, 1.6318360567092896),
+    rotation = 3.5,
+}
+
+function mod.on_all_mods_loaded()
+    mod:info("v"..mod.version.." loaded uwu nya :3")
+end
