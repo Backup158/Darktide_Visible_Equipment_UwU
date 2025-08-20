@@ -12,8 +12,8 @@ local vector3_box = Vector3Box
 local tostring = tostring
 
 -- Offsets for the base mod to read
---  This must be created BEFORE all mods are loaded
---  Since that's when the base mod looks for this
+--  This must be filled out BEFORE all mods are loaded
+--  Because that's when the base mod reads this table
 mod.visible_equipment_plugin = {
     offsets = {
         
@@ -51,44 +51,58 @@ end
 -- ####################
 -- MY OFFSETS
 -- ####################
--- ----------
--- Looping through every weapon for offsets
---      Using a generic, default value
---      Will overwrite below if needed
--- ----------
-for weapon_id, _ in pairs(WeaponTemplates) do
-	mod.visible_equipment_plugin.offsets[weapon_id] = {
-        butt = {
+local my_offsets_table = {
+    butt = {
+        offsets = {
             right = {
                 node = "j_hips",
                 position = vector3_box(0.005, -0.05, -0.069),
                 rotation = vector3_box(-5, 0, 90),
             },
         },
-        butt_flip = {
+        placements = "hip_back",
+        placement_camera = {
+            position = vector3_box(-1.2683889865875244, 2.639409065246582, 1.6318360567092896),
+            rotation = 3.5,
+        },
+    },
+    butt_flip = {
+        offsets = {
             right = {
                 node = "j_hips",
-                position = vector3_box(0.007, -0.05, 0.069),
+                position = vector3_box(0.007, -0.05, -0.069),
                 rotation = vector3_box(170, 0, 90),
             },
         },
-    }
+        placements = "hip_back",
+        placement_camera = {
+            position = vector3_box(-1.2683889865875244, 2.639409065246582, 1.6318360567092896),
+            rotation = 3.5,
+        },
+    },
+}
+
+-- ----------
+-- Looping through every weapon for offsets
+--      Using a generic, default value (from that table above)
+--      Will overwrite below if needed
+-- ----------
+for weapon_id, _ in pairs(WeaponTemplates) do
+    mod.visible_equipment_plugin.offsets[weapon_id] = {}
+
+    for offset_slot, _ in pairs(my_offsets_table) do
+        mod.visible_equipment_plugin.offsets[weapon_id][offset_slot] = my_offsets_table[offset_slot].offsets
+    end
 end
 
 -- ----------
 -- Setting base node for placement and camera preview
 --      Only done once for each slot I add
 -- ----------
-mod.visible_equipment_plugin.placements["butt"] = "hip_back"
-mod.visible_equipment_plugin.placements["butt_flip"] = "hip_back"
-mod.visible_equipment_plugin.placement_camera["butt"] = {
-    position = vector3_box(-1.2683889865875244, 2.639409065246582, 1.6318360567092896),
-    rotation = 3.5,
-}
-mod.visible_equipment_plugin.placement_camera["butt_flip"] = {
-    position = vector3_box(-1.2683889865875244, 2.639409065246582, 1.6318360567092896),
-    rotation = 3.5,
-}
+for offset_slot, _ in pairs(my_offsets_table) do
+    mod.visible_equipment_plugin.placements[weapon_id][offset_slot] = my_offsets_table[offset_slot].placements
+    mod.visible_equipment_plugin.placement_camera[weapon_id][offset_slot] = my_offsets_table[offset_slot].placement_camera
+end
 
 -- ----------
 -- Manual Overrides
