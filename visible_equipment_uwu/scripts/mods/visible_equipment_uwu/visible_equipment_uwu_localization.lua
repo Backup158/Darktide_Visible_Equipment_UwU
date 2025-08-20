@@ -1,5 +1,8 @@
 return {
+	mod_name = {
+		en = "Visible Equipment - Uncovered with Umbrage",
+	},
 	mod_description = {
-		en = "visible_equipment_uwu description",
+		en = "Visible equipment positioning for unnecessarily horny people",
 	},
 }
