@@ -117,8 +117,8 @@ end
 --      Only done once for each slot I add
 -- ----------
 for offset_slot, _ in pairs(default_offsets_table) do
-    mod.visible_equipment_plugin.placements[weapon_id][offset_slot] = default_offsets_table[offset_slot].placements
-    mod.visible_equipment_plugin.placement_camera[weapon_id][offset_slot] = default_offsets_table[offset_slot].placement_camera
+    mod.visible_equipment_plugin.placements[offset_slot] = default_offsets_table[offset_slot].placements
+    mod.visible_equipment_plugin.placement_camera[offset_slot] = default_offsets_table[offset_slot].placement_camera
 end
 
 -- ########################################
