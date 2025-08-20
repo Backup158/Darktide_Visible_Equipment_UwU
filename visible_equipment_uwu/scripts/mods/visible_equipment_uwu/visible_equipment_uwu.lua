@@ -9,6 +9,7 @@ local WeaponTemplates = require("scripts/settings/equipment/weapon_templates/wea
 
 -- Performance
 local vector3_box = Vector3Box
+local tostring = tostring
 
 -- Offsets for the base mod to read
 --  This must be created BEFORE all mods are loaded
@@ -24,6 +25,20 @@ mod.visible_equipment_plugin = {
         
     },
 }
+
+-- Manual override helper
+--      Overwrites default offsets for all weapons of a family
+local function overwrite_offset(weapon_id_without_mark, offset_slot, table_for_offset)
+    -- range: [1, 3]
+    for i = 1, 3 do
+        local weapon_id = weapon_id_without_mark.."_m"..tostring(i)
+        if not mod.visible_equipment_plugin.offsets[weapon_id] then
+            return
+        end
+
+        mod.visible_equipment_plugin.offsets[weapon_id][offset_slot] = table_for_offset
+    end
+end
 
 -- ####################
 -- MY OFFSETS
@@ -70,13 +85,13 @@ mod.visible_equipment_plugin.placement_camera["butt_flip"] = {
 -- ----------
 -- Manual Overrides
 -- ----------
-mod.visible_equipment_plugin.offsets.powersword_p1_m2["butt_flip"] = {
+overwrite_offset("powersword_p1", "butt_flip", {
     right = {
         node = "j_hips",
         position = vector3_box(0.007, 0.0, -0.0),
         rotation = vector3_box(140, 0, 0),
     },
-}
+})
 
 -- ####################
 -- HOOKS
