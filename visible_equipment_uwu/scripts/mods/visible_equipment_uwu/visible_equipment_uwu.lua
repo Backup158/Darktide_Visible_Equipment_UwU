@@ -34,7 +34,7 @@ mod.visible_equipment_plugin = {
 --      offset_slot; string; "butt"
 --      table_for_offset; table; no example because fuck you
 -- ----------
-local function overwrite_offset(weapon_id_without_mark, offset_slot, table_for_offset)
+local function overwrite_offset_slot_for_family(weapon_id_without_mark, offset_slot, table_for_offset)
     -- Loop over 3 marks
     --  range: [1, 3]
     for i = 1, 3 do
@@ -93,7 +93,7 @@ mod.visible_equipment_plugin.placement_camera["butt_flip"] = {
 -- ----------
 -- Manual Overrides
 -- ----------
-overwrite_offset("powersword_p1", "butt_flip", {
+overwrite_offset_slot_for_family("powersword_p1", "butt_flip", {
     right = {
         node = "j_hips",
         position = vector3_box(0.007, 0.0, -0.0),
