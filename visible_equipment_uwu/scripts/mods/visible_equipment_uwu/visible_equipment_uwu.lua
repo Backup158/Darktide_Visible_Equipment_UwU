@@ -1,5 +1,6 @@
 local mod = get_mod("visible_equipment_uwu")
 mod.version = "1.0.0"
+local debug_mode = mod:get("debug_mode")
 
 -- ####################
 -- UTILITY/SETUP
@@ -126,6 +127,13 @@ for offset_slot, _ in pairs(default_offsets_table) do
     mod.visible_equipment_plugin.placement_camera[offset_slot] = default_offsets_table[offset_slot].placement_camera
 end
 
+if debug_mode then
+    for key, value in pairs(mod.visible_equipment_plugin.offsets) do
+        mod:echo("key: "..type(key)..": "..tostring(key))
+        mod:echo("val: "..type(value)..": "..tostring(value))
+    end
+end
+
 -- ########################################
 -- ***** OFFSETS: ONLY FOR SOME WEAPONS *****
 -- ########################################
@@ -134,9 +142,13 @@ end
 -- Copies all existing placements, then makes versions without the shield
 -- ----------
 local weapon_families_with_shields = {
-    "shotpistol_p1", -- Subductor Shotpistol and Riot Shield
+    "shotpistol_shield_p1", -- Subductor Shotpistol and Riot Shield
     "powermaul_shield_p1", -- Shock Maul and Suppression Shield
     "ogryn_powermaul_slabshield_p1", -- Ogryn Power Maul and Slab Shield
+}
+local default_table = {
+    position = vector3_box(0, 0, 0),
+    rotation = vector3_box(0, 0, 0),
 }
 local left_table_to_hell = {
     position = vector3_box(0, 0, -99),
@@ -144,12 +156,25 @@ local left_table_to_hell = {
 }
 
 for _, family in ipairs(weapon_families_with_shields) do
-    local weapon_id = family.."_m1"
     
-    for slot_name, offset_table in pairs(mod.visible_equipment_plugin.offsets[weapon_id]) do
+    local weapon_id = family.."_m1"
+
+    if debug_mode then
+        mod:echo(weapon_id)
+        mod:echo(type(mod.visible_equipment_plugin.offsets[weapon_id]))
+    end
+
+    local original_weapon_return = mod:io_dofile("visible_equipment/scripts/mods/visible_equipment/weapons/"..weapon_id)
+    if (not original_weapon_return) or (not original_weapon_return.offsets) then 
+        if debug_mode then mod:echo("Original Offsets not found!") end
+        return 
+    end
+    
+    for slot_name, offset_table in pairs(original_weapon_return.offsets) do
         -- Copying the existing placement
         local copied_slot = slot_name.."_no_shield"
         local final_copied_offsets = offset_table
+        final_copied_offsets.right = offset_table.right or default_table
         -- Removing the shield (by SENDING IT TO HELL)
         final_copied_offsets.left = left_table_to_hell
 
