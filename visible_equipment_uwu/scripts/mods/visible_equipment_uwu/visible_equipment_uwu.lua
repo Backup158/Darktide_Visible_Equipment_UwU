@@ -129,8 +129,8 @@ end
 
 if debug_mode then
     for key, value in pairs(mod.visible_equipment_plugin.offsets) do
-        mod:echo("key: "..type(key)..": "..tostring(key))
-        mod:echo("val: "..type(value)..": "..tostring(value))
+        mod:info("key: "..type(key)..": "..tostring(key))
+        mod:info("val: "..type(value)..": "..tostring(value))
     end
 end
 
@@ -160,13 +160,13 @@ for _, family in ipairs(weapon_families_with_shields) do
     local weapon_id = family.."_m1"
 
     if debug_mode then
-        mod:echo(weapon_id)
-        mod:echo(type(mod.visible_equipment_plugin.offsets[weapon_id]))
+        mod:info(weapon_id)
+        mod:info(type(mod.visible_equipment_plugin.offsets[weapon_id]))
     end
 
     local original_weapon_return = mod:io_dofile("visible_equipment/scripts/mods/visible_equipment/weapons/"..weapon_id)
     if (not original_weapon_return) or (not original_weapon_return.offsets) then 
-        if debug_mode then mod:echo("Original Offsets not found!") end
+        if debug_mode then mod:info("Original Offsets not found!") end
         return 
     end
     
