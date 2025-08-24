@@ -170,15 +170,20 @@ for _, family in ipairs(weapon_families_with_shields) do
         return 
     end
     
-    for slot_name, offset_table in pairs(original_weapon_return.offsets) do
+    for original_slot_name, original_offset_table in pairs(original_weapon_return.offsets) do
         -- Copying the existing placement
-        local copied_slot = slot_name.."_no_shield"
-        local final_copied_offsets = offset_table
-        final_copied_offsets.right = offset_table.right or default_table
+        local slot_with_no_shield = original_slot_name.."_no_shield"
+        local final_copied_offsets = original_offset_table
+        final_copied_offsets.right = original_offset_table.right or default_table
         -- Removing the shield (by SENDING IT TO HELL)
         final_copied_offsets.left = left_table_to_hell
 
-        overwrite_offset_slot_for_family(family, copied_slot, final_copied_offsets)
+        -- Adding the offsets to this plugin
+        overwrite_offset_slot_for_family(family, slot_with_no_shield, final_copied_offsets)
+        -- Copying over the placements
+        --  wait that's not where they're stored lol
+        --mod.visible_equipment_plugin.placements[offset_slot] = original_weapon_return[original_slot_name].placements or 
+        --mod.visible_equipment_plugin.placement_camera[offset_slot] = original_weapon_return[original_slot_name].placement_camera
     end
 end
 
