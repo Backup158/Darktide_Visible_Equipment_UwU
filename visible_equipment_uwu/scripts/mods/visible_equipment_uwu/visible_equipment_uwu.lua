@@ -127,6 +127,38 @@ for offset_slot, _ in pairs(default_offsets_table) do
 end
 
 -- ########################################
+-- ***** OFFSETS: ONLY FOR SOME WEAPONS *****
+-- ########################################
+-- ----------
+-- Shield hiding
+-- Copies all existing placements, then makes versions without the shield
+-- ----------
+local weapon_families_with_shields = {
+    "shotpistol_p1", -- Subductor Shotpistol and Riot Shield
+    "powermaul_shield_p1", -- Shock Maul and Suppression Shield
+    "ogryn_powermaul_slabshield_p1", -- Ogryn Power Maul and Slab Shield
+}
+local left_table_to_hell = {
+    position = vector3_box(0, 0, -99),
+    rotation = vector3_box(0, 0, 0),
+}
+
+for _, family in ipairs(weapon_families_with_shields) do
+    local weapon_id = family.."_m1"
+    
+    for slot_name, offset_table in pairs(mod.visible_equipment_plugin.offsets[weapon_id]) do
+        -- Copying the existing placement
+        local copied_slot = slot_name.."_no_shield"
+        local final_copied_offsets = offset_table
+        -- Removing the shield (by SENDING IT TO HELL)
+        final_copied_offsets.left = left_table_to_hell
+
+        overwrite_offset_slot_for_family(family, copied_slot, final_copied_offsets)
+    end
+end
+
+
+-- ########################################
 -- ***** OFFSETS: MANUAL OVERRIDES *****
 -- ########################################
 overwrite_offset_slot_for_family("powersword_p1", "butt_flip", {
