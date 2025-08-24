@@ -70,6 +70,7 @@ local default_offsets_table = {
     
 }
 
+-- Adding in the Stupid Options
 if mod:get("owo_mode") then
     default_offsets_table["butt"] = {
         offsets = {
