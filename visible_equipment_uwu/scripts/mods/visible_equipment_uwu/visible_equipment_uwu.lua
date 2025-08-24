@@ -174,6 +174,7 @@ for _, family in ipairs(weapon_families_with_shields) do
         -- Copying the existing placement
         local slot_with_no_shield = original_slot_name.."_no_shield"
         local final_copied_offsets = original_offset_table
+        final_copied_offsets.node = original_offset_table.node or "j_hips"
         final_copied_offsets.right = original_offset_table.right or default_table
         -- Removing the shield (by SENDING IT TO HELL)
         final_copied_offsets.left = left_table_to_hell
