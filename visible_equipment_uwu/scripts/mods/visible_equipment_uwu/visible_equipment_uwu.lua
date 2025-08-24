@@ -111,16 +111,16 @@ end
 --      Will overwrite below if needed
 -- ----------
 for weapon_id, _ in pairs(WeaponTemplates) do
-    -- Exit if not weapon
-    if not _string_find(weapon_id, "_p") and not _string_find(weapon_id, "_m") then
-        return
-    end
-    -- Initializing the weapon's table
-    mod.visible_equipment_plugin.offsets[weapon_id] = {}
+    -- Only do this if it's a normal equippable weapon
+    if (_string_find(weapon_id, "_p")) and (_string_find(weapon_id, "_m")) then
+        -- Initializing the weapon's table
+        mod.visible_equipment_plugin.offsets[weapon_id] = {}
 
-    -- Adds all default offsets
-    for offset_slot, _ in pairs(default_offsets_table) do
-        mod.visible_equipment_plugin.offsets[weapon_id][offset_slot] = default_offsets_table[offset_slot].offsets
+        -- Adds all default offsets
+        for offset_slot, _ in pairs(default_offsets_table) do
+            mod.visible_equipment_plugin.offsets[weapon_id][offset_slot] = default_offsets_table[offset_slot].offsets
+        end
+
     end
 end
 
