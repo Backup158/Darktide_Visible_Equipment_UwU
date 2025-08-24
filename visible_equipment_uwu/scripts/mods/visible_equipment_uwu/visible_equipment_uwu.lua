@@ -143,6 +143,9 @@ end
 -- ########################################
 -- ***** OFFSETS: ONLY FOR SOME WEAPONS *****
 -- ########################################
+--[[
+Not necessary now that it's handled by the base mod
+but it was fun to do
 -- ----------
 -- Shield hiding
 -- Copies all existing placements, then makes versions without the shield
@@ -193,6 +196,7 @@ for _, family in ipairs(weapon_families_with_shields) do
         --mod.visible_equipment_plugin.placement_camera[offset_slot] = original_weapon_return[original_slot_name].placement_camera
     end
 end
+]]
 
 
 -- ########################################
