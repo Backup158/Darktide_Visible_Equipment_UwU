@@ -67,7 +67,11 @@ end
 -- ***** DEFAULT OFFSETS *****
 -- ########################################
 local default_offsets_table = {
-    butt = {
+    
+}
+
+if mod:get("owo_mode") then
+    default_offsets_table["butt"] = {
         offsets = {
             right = {
                 node = "j_hips",
@@ -80,8 +84,8 @@ local default_offsets_table = {
             position = vector3_box(-1.2683889865875244, 2.639409065246582, 1.6318360567092896),
             rotation = 3.5,
         },
-    },
-    butt_flip = {
+    }
+    default_offsets_table["butt_flip"] = {
         offsets = {
             right = {
                 node = "j_hips",
@@ -94,8 +98,8 @@ local default_offsets_table = {
             position = vector3_box(-1.2683889865875244, 2.639409065246582, 1.6318360567092896),
             rotation = 3.5,
         },
-    },
-}
+    }
+end
 
 -- ----------
 -- Looping through every weapon for offsets
