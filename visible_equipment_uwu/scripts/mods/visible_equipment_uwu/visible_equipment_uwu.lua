@@ -11,6 +11,8 @@ local WeaponTemplates = require("scripts/settings/equipment/weapon_templates/wea
 -- Performance
 local vector3_box = Vector3Box
 local tostring = tostring
+local string_match = string.match
+local _string_find = string.find
 
 -- ----------
 -- HOOKS
@@ -109,6 +111,10 @@ end
 --      Will overwrite below if needed
 -- ----------
 for weapon_id, _ in pairs(WeaponTemplates) do
+    -- Exit if not weapon
+    if not _string_find(weapon_id, "_p") and not _string_find(weapon_id, "_m") then
+        return
+    end
     -- Initializing the weapon's table
     mod.visible_equipment_plugin.offsets[weapon_id] = {}
 
