@@ -10,7 +10,7 @@ return {
 		en = "Debug Mode",
 	},
 	debug_mode_description = {
-		en = "Puts some more messages in chat for development"
+		en = "Puts extra messages in the console log for easier debugging"
 	},
 	owo_mode = {
 		en = "Add Very Stupid Positions",

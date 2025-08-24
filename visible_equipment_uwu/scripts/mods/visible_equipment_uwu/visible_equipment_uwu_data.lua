@@ -9,7 +9,7 @@ local function addWidget(name)
     finalWidgets[#finalWidgets + 1] = {
         setting_id = name,
         type = "checkbox",
-        default_value = false,
+        default_value = true,
     }
 end
 
@@ -17,9 +17,6 @@ end
 for _, name in pairs(widgetsToggleableToAdd) do
     addWidget(name)
 end
-
--- OwO mode defaults to on
-finalWidgets[2].default_value = true
 
 return {
 	name = mod:localize("mod_name"),
