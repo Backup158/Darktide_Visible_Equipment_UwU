@@ -14,6 +14,9 @@ local tostring = tostring
 local string = string
 local string_match = string.match
 local _string_find = string.find
+local table = table
+local table_insert = table.insert
+local table_dump = table.dump
 
 -- ----------
 -- HOOKS
@@ -29,20 +32,28 @@ function mod.on_all_mods_loaded()
 end
 
 -- ----------
+-- Automatically grabbing all weapons
+-- ----------
+local all_weapon_ids = {}
+for weapon_id, _ in pairs(WeaponTemplates) do
+    -- Only do this if it's a normal equippable weapon
+    if (_string_find(weapon_id, "_p")) and (_string_find(weapon_id, "_m")) then
+        table_insert(all_weapon_ids, weapon_id)
+    end
+end
+if debug_mode then
+    table_dump(all_weapon_ids, "All weapons found", 10)
+end
+
+-- ----------
 -- Offsets for the base mod to read
 --  This must be filled out BEFORE all mods are loaded
 --  Because that's when the base mod reads this table
 -- ----------
 mod.visible_equipment_plugin = {
-    offsets = {
-        
-    },
-    placements = {
-        
-    },
-    placement_camera = {
-        
-    },
+    offsets = { },
+    placements = { },
+    placement_camera = { },
 }
 
 -- ----------
@@ -70,9 +81,7 @@ end
 -- ########################################
 -- ***** DEFAULT OFFSETS *****
 -- ########################################
-local default_offsets_table = {
-    
-}
+local default_offsets_table = { }
 
 -- Adding in the Stupid Options
 if mod:get("owo_mode") then
@@ -111,17 +120,15 @@ end
 --      Using a generic, default value (from that table above)
 --      Will overwrite below if needed
 -- ----------
-for weapon_id, _ in pairs(WeaponTemplates) do
-    -- Only do this if it's a normal equippable weapon
-    if (_string_find(weapon_id, "_p")) and (_string_find(weapon_id, "_m")) then
-        -- Initializing the weapon's table
+for _, weapon_id in ipairs(all_weapon_ids) do
+    -- Initializing the weapon's table
+    if not mod.visible_equipment_plugin.offsets[weapon_id] then
         mod.visible_equipment_plugin.offsets[weapon_id] = {}
+    end
 
-        -- Adds all default offsets
-        for offset_slot, _ in pairs(default_offsets_table) do
-            mod.visible_equipment_plugin.offsets[weapon_id][offset_slot] = default_offsets_table[offset_slot].offsets
-        end
-
+    -- Adds all default offsets
+    for offset_slot, _ in pairs(default_offsets_table) do
+        mod.visible_equipment_plugin.offsets[weapon_id][offset_slot] = default_offsets_table[offset_slot].offsets
     end
 end
 
