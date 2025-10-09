@@ -1,5 +1,5 @@
 local mod = get_mod("visible_equipment_uwu")
-mod.version = "1.0.0"
+mod.version = "1.1.0"
 local debug_mode = mod:get("debug_mode")
 
 -- ####################
