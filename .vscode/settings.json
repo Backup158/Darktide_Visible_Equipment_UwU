@@ -1,0 +1,8 @@
+{
+    "Lua.diagnostics.globals": [
+        "get_mod"
+    ],
+    "Lua.diagnostics.disable": [
+        "undefined-global"
+    ]
+}
