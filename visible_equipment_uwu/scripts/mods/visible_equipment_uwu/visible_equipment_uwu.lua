@@ -11,6 +11,7 @@ local WeaponTemplates = require("scripts/settings/equipment/weapon_templates/wea
 -- Performance
 local vector3_box = Vector3Box
 local tostring = tostring
+local string = string
 local string_match = string.match
 local _string_find = string.find
 
