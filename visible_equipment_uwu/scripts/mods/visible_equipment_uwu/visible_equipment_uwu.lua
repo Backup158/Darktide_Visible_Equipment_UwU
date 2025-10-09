@@ -135,9 +135,10 @@ for offset_slot, _ in pairs(default_offsets_table) do
 end
 
 if debug_mode then
+    mod:info("Offsets: ")
     for key, value in pairs(mod.visible_equipment_plugin.offsets) do
-        mod:info("key: "..type(key)..": "..tostring(key))
-        mod:info("val: "..type(value)..": "..tostring(value))
+        mod:info("\tkey: "..type(key)..": "..tostring(key))
+        mod:info("\tval: "..type(value)..": "..tostring(value))
     end
 end
 
