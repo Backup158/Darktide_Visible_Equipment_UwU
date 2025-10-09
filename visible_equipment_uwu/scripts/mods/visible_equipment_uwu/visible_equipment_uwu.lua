@@ -25,8 +25,8 @@ local table_dump = table.dump
 function mod.on_all_mods_loaded()
     mod:info("v"..mod.version.." loaded uwu nya :3")
 
-    local visible_equipment = get_mod("visible_equipment")
-    if not visible_equipment then
+    -- putting this here because it's load order agnostic, so having the check before all mods loaded may throw errors if this is before the base mod
+    if not get_mod("visible_equipment") then
         mod:error("Visible Equipment mod required! The standalone mod, not Extended Weapon Customization")
     end
 end
