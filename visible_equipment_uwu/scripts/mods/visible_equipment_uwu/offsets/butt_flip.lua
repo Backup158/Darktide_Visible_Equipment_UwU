@@ -1,3 +1,7 @@
+local mod = get_mod("visible_equipment_uwu")
+
+local vector3_box = Vector3Box
+
 return {
         offsets = {
             right = {
