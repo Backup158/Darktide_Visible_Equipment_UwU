@@ -19,6 +19,7 @@ local _string_find = string.find
 
 local table = table
 local table_insert = table.insert
+local table_clone = table.clone
 local table_dump = table.dump
 
 -- ----------
@@ -104,6 +105,24 @@ local function add_offsets_to_table_from_file(table_to_add_to, offset_name)
     table_to_add_to[offset_name] = open_mod_file("offsets/"..offset_name)
 end
 
+local function add_whole_offset_from_file_direct(offset_name, table_of_weapons_to_add_to)
+    local values_from_file = open_mod_file("offsets/"..offset_name)
+
+    -- Copy offsets for each weapon
+    for _, weapon_id in ipairs(table_of_weapons_to_add_to) do
+        -- Initializing the weapon's table if not done yet
+        if not mod.visible_equipment_plugin.offsets[weapon_id] then
+            mod.visible_equipment_plugin.offsets[weapon_id] = {}
+        end
+
+        -- need to clone bc it may get overwritten
+        mod.visible_equipment_plugin.offsets[weapon_id][offset_name] = table_clone(values_from_file.offsets)
+    end
+    -- Add placement info
+    mod.visible_equipment_plugin.placements[offset_name] = values_from_file.placements
+    mod.visible_equipment_plugin.placement_camera[offset_name] = values_from_file.placement_camera
+end
+
 -- ########################################
 -- ***** DEFAULT OFFSETS *****
 -- Each weapon has a table of offset
@@ -113,10 +132,15 @@ local offsets_for_all_weapons = { }
 
 -- Adding in the Stupid Options
 if mod:get("owo_mode") then
-    add_offsets_to_table_from_file(offsets_for_all_weapons, "butt")
-    add_offsets_to_table_from_file(offsets_for_all_weapons, "butt_flip")
+    add_whole_offset_from_file_direct("butt", all_weapon_ids)
+    add_whole_offset_from_file_direct("butt_flip", all_weapon_ids)
 end
-add_offsets_to_table_from_file(offsets_for_all_weapons, "chest_pistol")
+add_whole_offset_from_file_direct("chest_pistol", {
+    "laspistol_p1_m1",
+    "laspistol_p1_m2",
+    "stubrevolver_p1_m1",
+    "stubrevolver_p1_m2",
+})
 
 -- ----------
 -- Looping through every weapon for offsets
