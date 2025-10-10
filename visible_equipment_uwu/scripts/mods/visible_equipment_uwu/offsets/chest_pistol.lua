@@ -3,8 +3,8 @@ local mod = get_mod("visible_equipment_uwu")
 local vector3_box = Vector3Box
 
 mod:add_global_localize_strings({
-    loc_ve_uwu_chest = {
-        en = "Chest",
+    loc_ve_uwu_chest_pistol = {
+        en = "Chest Pistol",
     }
 })
 
@@ -12,13 +12,13 @@ return {
     offsets = {
         right = {
             node = "j_hips",
-            position = vector3_box(0.005, -0.05, 0.069),
-            rotation = vector3_box(5, -40, 00),
+            position = vector3_box(0.04, 0.17, 0.4),
+            rotation = vector3_box(-15, -40, 90),
         },
     },
-    placements = "hip_front",
+    placements = "chest_pistol",
     placement_camera = {
         position = vector3_box(-1.258, 2.639, 1.632),
-        rotation = 0,
+        rotation = 0.5,
     },
 }
