@@ -81,41 +81,25 @@ local function overwrite_offset_slot_for_family(weapon_id_without_mark, offset_s
     end
 end
 
+local function open_mod_file(relative_file_path) 
+    return mod:io_dofile("visible_equipment_uwu/scripts/mods/visible_equipment_uwu/"..relative_file_path)
+end
+
+local function add_offsets_to_table_from_file(table_to_add_to, offset_name)
+    table_to_add_to[offset_name] = open_mod_file("offsets/"..offset_name)
+end
+
 -- ########################################
 -- ***** DEFAULT OFFSETS *****
+-- Each weapon has a table of offset
+-- Each offset has a placement and placement camera
 -- ########################################
-local default_offsets_table = { }
+local offsets_for_all_weapons = { }
 
 -- Adding in the Stupid Options
 if mod:get("owo_mode") then
-    default_offsets_table["butt"] = {
-        offsets = {
-            right = {
-                node = "j_hips",
-                position = vector3_box(0.005, -0.05, -0.069),
-                rotation = vector3_box(-5, 0, 90),
-            },
-        },
-        placements = "hip_back",
-        placement_camera = {
-            position = vector3_box(-1.2683889865875244, 2.639409065246582, 1.6318360567092896),
-            rotation = 3.5,
-        },
-    }
-    default_offsets_table["butt_flip"] = {
-        offsets = {
-            right = {
-                node = "j_hips",
-                position = vector3_box(0.007, -0.05, -0.069),
-                rotation = vector3_box(170, 0, 90),
-            },
-        },
-        placements = "hip_back",
-        placement_camera = {
-            position = vector3_box(-1.2683889865875244, 2.639409065246582, 1.6318360567092896),
-            rotation = 3.5,
-        },
-    }
+    add_offsets_to_table_from_file(offsets_for_all_weapons, "butt")
+    add_offsets_to_table_from_file(offsets_for_all_weapons, "butt_flip")
 end
 
 -- ----------
@@ -130,8 +114,8 @@ for _, weapon_id in ipairs(all_weapon_ids) do
     end
 
     -- Adds all default offsets
-    for offset_slot, _ in pairs(default_offsets_table) do
-        mod.visible_equipment_plugin.offsets[weapon_id][offset_slot] = default_offsets_table[offset_slot].offsets
+    for offset_slot, _ in pairs(offsets_for_all_weapons) do
+        mod.visible_equipment_plugin.offsets[weapon_id][offset_slot] = offsets_for_all_weapons[offset_slot].offsets
     end
 end
 
@@ -139,9 +123,9 @@ end
 -- Setting base node for placement and camera preview
 --      Only done once for each slot I add
 -- ----------
-for offset_slot, _ in pairs(default_offsets_table) do
-    mod.visible_equipment_plugin.placements[offset_slot] = default_offsets_table[offset_slot].placements
-    mod.visible_equipment_plugin.placement_camera[offset_slot] = default_offsets_table[offset_slot].placement_camera
+for offset_slot, _ in pairs(offsets_for_all_weapons) do
+    mod.visible_equipment_plugin.placements[offset_slot] = offsets_for_all_weapons[offset_slot].placements
+    mod.visible_equipment_plugin.placement_camera[offset_slot] = offsets_for_all_weapons[offset_slot].placement_camera
 end
 
 if debug_mode then
