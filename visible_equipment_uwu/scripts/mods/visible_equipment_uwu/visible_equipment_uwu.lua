@@ -22,10 +22,10 @@ local table_insert = table.insert
 local table_clone = table.clone
 local table_dump = table.dump
 
--- ----------
+-- --------------------
 -- HOOKS
 -- Defining actions for startup
--- ----------
+-- --------------------
 function mod.on_all_mods_loaded()
     mod:info("v"..mod.version.." loaded uwu nya :3")
     
@@ -37,6 +37,9 @@ function mod.on_all_mods_loaded()
     end
 end
 
+-- --------------------
+-- HELPER FUNCTIONS
+-- --------------------
 -- ----------
 -- Automatically grabbing all weapons
 -- ----------
@@ -95,16 +98,12 @@ local function open_mod_file(relative_file_path)
 end
 
 -- ----------
--- add_offsets_to_table_from_file
+-- add_whole_offset_from_file_direct
 -- PARAM: 
---          table_to_add_to; table; table that the value gets added to
+--         table_of_weapons_to_add_to; table of strings; all the weapons (e.g. "autogun_p1_m2") this offset is added to
 --         offset_name; string; "nyaaa" to go to "./offsets/nyaaa.lua"
 -- RETURN: N/A
 -- ----------
-local function add_offsets_to_table_from_file(table_to_add_to, offset_name)
-    table_to_add_to[offset_name] = open_mod_file("offsets/"..offset_name)
-end
-
 local function add_whole_offset_from_file_direct(offset_name, table_of_weapons_to_add_to)
     local values_from_file = open_mod_file("offsets/"..offset_name)
 
