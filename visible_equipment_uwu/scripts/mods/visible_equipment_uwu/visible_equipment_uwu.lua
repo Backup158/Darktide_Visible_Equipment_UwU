@@ -116,6 +116,7 @@ if mod:get("owo_mode") then
     add_offsets_to_table_from_file(offsets_for_all_weapons, "butt")
     add_offsets_to_table_from_file(offsets_for_all_weapons, "butt_flip")
 end
+add_offsets_to_table_from_file(offsets_for_all_weapons, "chest")
 
 -- ----------
 -- Looping through every weapon for offsets
