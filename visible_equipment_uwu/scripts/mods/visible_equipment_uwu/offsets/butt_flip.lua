@@ -12,7 +12,7 @@ return {
         },
         placements = "hip_back",
         placement_camera = {
-            position = vector3_box(-1.2683889865875244, 2.639409065246582, 1.6318360567092896),
+            position = vector3_box(-1.258, 2.639, 1.632),
             rotation = 3.5,
         },
     }
