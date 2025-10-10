@@ -9,10 +9,14 @@ local debug_mode = mod:get("debug_mode")
 local WeaponTemplates = require("scripts/settings/equipment/weapon_templates/weapon_templates")
 
 -- Performance
+local pairs = pairs
+local ipairs = ipairs
+
 local tostring = tostring
 local string = string
 local string_match = string.match
 local _string_find = string.find
+
 local table = table
 local table_insert = table.insert
 local table_dump = table.dump
