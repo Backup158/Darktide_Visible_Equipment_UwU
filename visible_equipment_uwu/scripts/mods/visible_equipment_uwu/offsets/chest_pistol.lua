@@ -13,7 +13,7 @@ return {
         right = {
             node = "j_hips",
             position = vector3_box(0.04, 0.17, 0.4),
-            rotation = vector3_box(-15, -40, 90),
+            rotation = vector3_box(20, -40, 90),
         },
     },
     placements = "chest_pistol",
