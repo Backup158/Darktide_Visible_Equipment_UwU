@@ -81,10 +81,23 @@ local function overwrite_offset_slot_for_family(weapon_id_without_mark, offset_s
     end
 end
 
+-- ----------
+-- Opens File in this Mod's Folder
+-- PARAM: 
+--         relative_file_path; string; "offsets/nyaaa" to go to "./offsets/nyaaa.lua"
+-- RETURN: whatever that file returns
+-- ----------
 local function open_mod_file(relative_file_path) 
     return mod:io_dofile("visible_equipment_uwu/scripts/mods/visible_equipment_uwu/"..relative_file_path)
 end
 
+-- ----------
+-- add_offsets_to_table_from_file
+-- PARAM: 
+--          table_to_add_to; table; table that the value gets added to
+--         offset_name; string; "nyaaa" to go to "./offsets/nyaaa.lua"
+-- RETURN: N/A
+-- ----------
 local function add_offsets_to_table_from_file(table_to_add_to, offset_name)
     table_to_add_to[offset_name] = open_mod_file("offsets/"..offset_name)
 end
