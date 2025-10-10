@@ -9,7 +9,6 @@ local debug_mode = mod:get("debug_mode")
 local WeaponTemplates = require("scripts/settings/equipment/weapon_templates/weapon_templates")
 
 -- Performance
-local vector3_box = Vector3Box
 local tostring = tostring
 local string = string
 local string_match = string.match
@@ -211,10 +210,9 @@ end
 -- ########################################
 -- ***** OFFSETS: MANUAL OVERRIDES *****
 -- ########################################
-overwrite_offset_slot_for_family("powersword_p1", "butt_flip", {
-    right = {
-        node = "j_hips",
-        position = vector3_box(0.007, 0.0, -0.0),
-        rotation = vector3_box(140, 0, 0),
-    },
-})
+local families_that_need_overrides = { "powersword_p1", }
+for _, weapon_family in ipairs(families_that_need_overrides) do
+    for slot, offset in pairs(open_mod_file("overwrite_offset_slot_for_family/"..weapon_family)) do
+        overwrite_offset_slot_for_family(weapon_family, slot, offset)
+    end
+end
