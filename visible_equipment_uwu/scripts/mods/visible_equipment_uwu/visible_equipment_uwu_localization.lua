@@ -1,7 +1,7 @@
 return {
 	-- Settings and widgets
 	mod_name = {
-		en = "Visible Equipment - Uncovered with Umbrage",
+		en = "Visible Equipment - Uprooted with Umbrage (UwU)",
 	},
 	mod_description = {
 		en = "Visible equipment positioning for unnecessarily horny people",
