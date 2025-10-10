@@ -136,7 +136,7 @@ if mod:get("owo_mode") then
 end
 
 local pistol_ids = {}
-for _, weapon_id in pairs(all_weapon_ids) do
+for _, weapon_id in ipairs(all_weapon_ids) do
     if (_string_find(weapon_id, "pistol")) or (_string_find(weapon_id, "revolver")) then
         table_insert(pistol_ids, weapon_id)
     end 
