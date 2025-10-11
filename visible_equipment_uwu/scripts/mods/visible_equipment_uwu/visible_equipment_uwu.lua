@@ -75,6 +75,11 @@ local visible_equipment_plugin = {
 --      table_for_offset; table; no example because fuck you
 -- ----------
 local function overwrite_offset_slot_for_family(weapon_id_without_mark, offset_slot, table_for_offset)
+    if not table_for_offset then 
+        mod:info("No custom offsets for "..weapon_id_without_mark)
+        return
+    end
+    
     -- Loop over 3 marks
     --  range: [1, 3]
     for i = 1, 3 do
