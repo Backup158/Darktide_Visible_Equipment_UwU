@@ -3,14 +3,14 @@ v1.1.0
 
 - Added placements
     - Chest Pistol, `chest_pistol`
-        - For pistols (any weapon with "pistol" or "revolver" in the internal name)
+        - For pistols
         - On the right side of the upper chest, pointing away from the right shoulder
     - Shoulder Holster, `under_left_arm`
         - For pistols
         - Under the left armpit, pointing to the back
     - Shoulder Holster (Sinister), `under_right_arm`
         - For pistols
-        - Under the left armpit, pointing to the back
+        - Under the right armpit, pointing to the back
 - Majorly refactored code to be cleaner
     - offsets are defined in their own files
     - offset overwrites are defined in each weapon family
