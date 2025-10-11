@@ -148,6 +148,8 @@ for _, weapon_id in ipairs(all_weapon_ids) do
     end 
 end
 add_whole_offset_from_file_direct("chest_pistol", pistol_ids)
+add_whole_offset_from_file_direct("under_arm_left", pistol_ids)
+add_whole_offset_from_file_direct("under_arm_right", pistol_ids)
 
 if debug_mode then 
     table_dump(visible_equipment_plugin.offsets, "BULGING OFFSETS", 10) 
