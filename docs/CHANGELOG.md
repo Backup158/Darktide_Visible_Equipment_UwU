@@ -5,6 +5,8 @@ v1.1.0
 - Majorly refactored code to be cleaner
     - offsets are defined in their own files
     - offset overwrites are defined in each weapon family
+        - only overwrites if given something to overwrite with
+        - so I don't have to copy over the whole offset, just the parts that changed
     - adding to the file's main table is done through a function no matter what
         - before it would only use a function if adding to all weapons
         - then if it's specialized, it'd be done manually one by one
