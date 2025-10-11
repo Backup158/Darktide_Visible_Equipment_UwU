@@ -3,7 +3,7 @@ local mod = get_mod("visible_equipment_uwu")
 local vector3_box = Vector3Box
 
 mod:add_global_localize_strings({
-    loc_ve_TEMPLATE = {
+    loc_ve_placement_TEMPLATE = {
         en = "NAME",
     }
 })
