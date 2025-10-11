@@ -130,7 +130,7 @@ end
 -- Each offset has a placement and placement camera
 -- ########################################
 -- Adding in the Stupid Options
-if mod:get("owo_mode") then
+if mod:get("xd_mode") then
     add_whole_offset_from_file_direct("butt", all_weapon_ids)
     add_whole_offset_from_file_direct("butt_flip", all_weapon_ids)
 end

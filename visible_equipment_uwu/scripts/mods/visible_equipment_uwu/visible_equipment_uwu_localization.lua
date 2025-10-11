@@ -12,10 +12,10 @@ return {
 	debug_mode_description = {
 		en = "Puts extra messages in the console log for easier debugging"
 	},
-	owo_mode = {
+	xd_mode = {
 		en = "xd mode",
 	},
-	owo_mode_description = {
+	xd_mode_description = {
 		en = "Lets you use the weapon placements that are very dumb (such as weapon in anus).\nREQUIRES GAME RESTART/RELOAD TO APPLY!"
 	},
 	-- The local localizations are in the base mod so I don't think it'll work like this
