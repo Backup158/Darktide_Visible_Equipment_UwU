@@ -13,10 +13,10 @@ return {
 		en = "Puts extra messages in the console log for easier debugging"
 	},
 	owo_mode = {
-		en = "Add Very Stupid Positions",
+		en = "xd mode",
 	},
 	owo_mode_description = {
-		en = "Lets you use the offsets that are very dumb (weapon in butthole).\nREQUIRES GAME RESTART/RELOAD TO APPLY!"
+		en = "Lets you use the weapon placements that are very dumb (such as weapon in anus).\nREQUIRES GAME RESTART/RELOAD TO APPLY!"
 	},
 	-- The local localizations are in the base mod so I don't think it'll work like this
 	placement_butt = {
