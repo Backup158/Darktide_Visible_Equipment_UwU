@@ -53,7 +53,9 @@ for weapon_id, _ in pairs(WeaponTemplates) do
     end
 end
 if debug_mode then
-    table_dump(all_weapon_ids, "All weapons found", 10)
+    mod:echo("WEAPON TEMPLATES DUMPED! Don't forget to remove these!")
+    table_dump(WeaponTemplates, "WeaponTemplatussy", 10)
+    --table_dump(all_weapon_ids, "All weapons found", 10)
 end
 
 -- ----------
