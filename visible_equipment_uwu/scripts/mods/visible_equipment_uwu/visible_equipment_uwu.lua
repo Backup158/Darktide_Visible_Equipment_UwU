@@ -22,6 +22,7 @@ local table = table
 local table_insert = table.insert
 local table_clone = table.clone
 local table_dump = table.dump
+local table_merge_recursive = table.merge_recursive
 
 -- --------------------
 -- HOOKS
@@ -72,10 +73,10 @@ local visible_equipment_plugin = {
 -- PARAM:
 --      weapon_id_without_mark; string; "powersword_p1"
 --      offset_slot; string; "butt"
---      table_for_offset; table; no example because fuck you
+--      table_for_this_offset; table; no example because fuck you
 -- ----------
-local function overwrite_offset_slot_for_family(weapon_id_without_mark, offset_slot, table_for_offset)
-    if not table_for_offset then 
+local function overwrite_offset_slot_for_family(weapon_id_without_mark, offset_slot, table_for_this_offset)
+    if not table_for_this_offset then 
         mod:info("No custom offsets for "..weapon_id_without_mark)
         return
     end
@@ -89,7 +90,7 @@ local function overwrite_offset_slot_for_family(weapon_id_without_mark, offset_s
             return
         end
 
-        visible_equipment_plugin.offsets[weapon_id][offset_slot] = table_for_offset
+        table_merge_recursive(visible_equipment_plugin.offsets[weapon_id][offset_slot], table_for_this_offset)
     end
 end
 
