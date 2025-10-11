@@ -1,10 +1,19 @@
 # Visible Equipment - Uprooted with Umbrage
-Addon for the Standalone Visible Equipment mod for *Warhammer 40,000: Darktide*
+Addon for the Standalone Visible Equipment mod for *Warhammer 40,000: Darktide*.
 
 Adds weapon placements that I think are cool. Mostly tactical and shitposty. 
 
-Placements may have a descriptive tag that is *italicized*. Explanations on this are in the glossary.
+## Requirements
+- Darktide prepared for modding
+    - DML/DMF (see linked guide in installation)
+    - Not played through cloud gaming services
+- Visible Equipment
+    - Currently not on Nexus. WIP in the [Darktide Modders Discord](https://discord.gg/rKYWtaDx4D)
+
+https://dmf-docs.darkti.de/#/installing-mods
+
 ## Weapon Placements
+Placements may have a descriptive tag that is *italicized*. Explanations on this are in the glossary.
 -  Chest Pistol, `chest_pistol`
     - On the right side of the upper chest, pointing away from the right shoulder
     - *For pistols*
