@@ -134,6 +134,8 @@ local function add_whole_offset_from_file_direct(offset_name, table_of_weapons_t
     end
 
     -- Add placement info
+    --  if no custom camera position given, use one of the existing positions
+    --  otherwise, use the custom placement
     if not values_from_file.placement_camera then
         visible_equipment_plugin.placements[offset_name] = values_from_file.placements or "hip_front"
     else
