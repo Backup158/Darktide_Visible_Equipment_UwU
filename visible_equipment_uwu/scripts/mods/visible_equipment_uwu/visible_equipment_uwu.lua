@@ -142,8 +142,8 @@ end
 -- ########################################
 -- Adding in the Stupid Options
 if mod:get("xd_mode") then
-    add_whole_offset_from_file_direct("butt", all_weapon_ids)
-    add_whole_offset_from_file_direct("butt_flip", all_weapon_ids)
+    add_whole_offset_from_file_direct("uwu_butt", all_weapon_ids)
+    add_whole_offset_from_file_direct("uwu_butt_flip", all_weapon_ids)
 end
 
 local pistol_ids = {}
@@ -152,9 +152,9 @@ for _, weapon_id in ipairs(all_weapon_ids) do
         table_insert(pistol_ids, weapon_id)
     end 
 end
-add_whole_offset_from_file_direct("chest_pistol", pistol_ids)
-add_whole_offset_from_file_direct("under_left_arm", pistol_ids)
-add_whole_offset_from_file_direct("under_right_arm", pistol_ids)
+add_whole_offset_from_file_direct("uwu_chest_pistol", pistol_ids)
+add_whole_offset_from_file_direct("uwu_under_left_arm", pistol_ids)
+add_whole_offset_from_file_direct("uwu_under_right_arm", pistol_ids)
 
 if enable_debug_mode then 
     table_dump(visible_equipment_plugin, "BULGING OFFSETS AND POSITIONS", 10) 
