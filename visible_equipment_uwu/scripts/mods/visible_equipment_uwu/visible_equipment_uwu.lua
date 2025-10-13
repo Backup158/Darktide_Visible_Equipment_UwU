@@ -116,7 +116,7 @@ end
 local function add_whole_offset_from_file_direct(offset_name, table_of_weapons_to_add_to)
     local values_from_file = open_mod_file("offsets/"..offset_name)
 
-    -- Copy offsets for each weapon
+    -- Copy offsets for EACH weapon
     --  uses a generic offset, which may be overwritten later
     for _, weapon_id in ipairs(table_of_weapons_to_add_to) do
         -- Initializing the weapon's table if not done yet
@@ -127,6 +127,7 @@ local function add_whole_offset_from_file_direct(offset_name, table_of_weapons_t
         -- need to clone bc it may get overwritten
         visible_equipment_plugin.offsets[weapon_id][offset_name] = table_clone(values_from_file.offsets)
     end
+
     -- Add placement info
     visible_equipment_plugin.placements[offset_name] = values_from_file.placements
     visible_equipment_plugin.placement_camera[offset_name] = values_from_file.placement_camera
