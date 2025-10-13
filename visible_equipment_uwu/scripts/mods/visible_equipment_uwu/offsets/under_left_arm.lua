@@ -16,13 +16,9 @@ return {
             rotation = vector3_box(15, -10, 180),
         },
     },
-    placements = {
-        under_left_arm = "under_left_arm",
-    },
+    placements = "under_left_arm",
     placement_camera = {
-        under_left_arm = {
-            position = vector3_box(-1.258, 2.639, 1.632),
-            rotation = 1.5,
-        }
+        position = vector3_box(-1.258, 2.639, 1.632),
+        rotation = 1.5,
     },
 }
