@@ -52,10 +52,11 @@ for weapon_id, _ in pairs(WeaponTemplates) do
         table_insert(all_weapon_ids, weapon_id)
     end
 end
-if enable_debug_mode then
-    mod:echo("WEAPON TEMPLATES DUMPED! Don't forget to remove these!")
-    table_dump(WeaponTemplates, "WeaponTemplatussy", 10)
-    --table_dump(all_weapon_ids, "All weapons found", 10)
+if false and enable_debug_mode then
+    --mod:echo("WEAPON TEMPLATES DUMPED! Don't forget to remove these!")
+    --table_dump(WeaponTemplates, "WeaponTemplatussy", 10)
+    
+    table_dump(all_weapon_ids, "All weapons found", 10)
 end
 
 -- ----------
@@ -155,7 +156,7 @@ add_whole_offset_from_file_direct("under_left_arm", pistol_ids)
 add_whole_offset_from_file_direct("under_right_arm", pistol_ids)
 
 if enable_debug_mode then 
-    table_dump(visible_equipment_plugin.offsets, "BULGING OFFSETS", 10) 
+    table_dump(visible_equipment_plugin, "BULGING OFFSETS AND POSITIONS", 10) 
 end
 
 -- ########################################
