@@ -48,7 +48,8 @@ end
 local all_weapon_ids = {}
 for weapon_id, _ in pairs(WeaponTemplates) do
     -- Only do this if it's a normal equippable weapon
-    if (_string_find(weapon_id, "_p")) and (_string_find(weapon_id, "_m")) then
+    --  _p<digit>_m<digit>
+    if _string_find(weapon_id, "_p%d_m%d") then
         table_insert(all_weapon_ids, weapon_id)
     end
 end
