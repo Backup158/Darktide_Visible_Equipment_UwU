@@ -153,6 +153,29 @@ local function add_whole_offset_from_file_direct(offset_name, table_of_weapons_t
     visible_equipment_plugin.placement_camera[offset_name] = values_from_file.placement_camera
 end
 
+-- ----------
+-- Create Left-handed variant
+-- From an already generated offset, create a version suited for left handed use
+-- PARAM
+--  offset_to_copy; string; such as "uwu_butt"
+-- RETURN: N/A just writes values
+-- ----------
+local function create_sinister_offset(original_offset_name)
+    for weapon_id, weapon_offset_table in ipairs(visible_equipment_plugin.offsets) do
+        -- if it has original offset, copy and modify
+        if visible_equipment_plugin.offsets[weapon_id][original_offset_name] then
+            local sinister_name = original_offset_name.."_sinister"
+            -- copy original offset
+            local temp_sinister = table_clone(visible_equipment_plugin.offsets[weapon_id][original_offset_name])
+            -- flip values
+            temp_sinister.position = temp_sinister.position * vector3_box(-1, 1, 1)
+            temp_sinister.rotation = temp_sinister.rotation * vector3_box(1, -1, 1)
+
+            visible_equipment_plugin.offsets[weapon_id][sinister_name] = temp_sinister
+        end
+    end
+end
+
 -- ########################################
 -- ***** DEFAULT OFFSETS *****
 -- Each weapon has a table of offset
