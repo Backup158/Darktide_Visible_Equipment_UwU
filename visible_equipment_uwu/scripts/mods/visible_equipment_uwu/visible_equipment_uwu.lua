@@ -89,11 +89,11 @@ local function overwrite_offset_slot_for_family(weapon_id_without_mark, offset_s
     for i = 1, 3 do
         local weapon_id = weapon_id_without_mark.."_m"..tostring(i)
         -- If this mark doesn't exist (doesn't have an offset already), don't try it
+        --      weapon may just not exist and this is cheaper than checking the masteritems
         if not visible_equipment_plugin.offsets[weapon_id] then
             return
-        end
-
-        if not visible_equipment_plugin.offsets[weapon_id][offset_slot] then
+        -- If trying to overwrite an offset that wasn't added to that weapon, yell at me
+        elseif not visible_equipment_plugin.offsets[weapon_id][offset_slot] then
             mod:error("Cannot overwrite slot <"..offset_slot.."> for <"..weapon_id.."> because that offset isn't on that weapon!")
             return
         end
