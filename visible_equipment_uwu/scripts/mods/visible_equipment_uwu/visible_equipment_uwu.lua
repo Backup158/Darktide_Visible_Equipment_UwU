@@ -93,6 +93,10 @@ local function overwrite_offset_slot_for_family(weapon_id_without_mark, offset_s
             return
         end
 
+        if not visible_equipment_plugin.offsets[weapon_id][offset_slot] then
+            mod:error("Cannot overwrite slot <"..offset_slot.."> for <"..weapon_id.."> because that offset isn't on that weapon!")
+            return
+        end
         table_merge_recursive(visible_equipment_plugin.offsets[weapon_id][offset_slot], table_for_this_offset)
     end
 end
