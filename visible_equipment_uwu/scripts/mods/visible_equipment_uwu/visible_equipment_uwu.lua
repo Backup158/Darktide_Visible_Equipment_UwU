@@ -134,8 +134,12 @@ local function add_whole_offset_from_file_direct(offset_name, table_of_weapons_t
     end
 
     -- Add placement info
-    --visible_equipment_plugin.placements[offset_name] = values_from_file.placements
-    visible_equipment_plugin.placements[offset_name] = offset_name
+    if not values_from_file.placement_camera then
+        visible_equipment_plugin.placements[offset_name] = values_from_file.placements
+    else
+        visible_equipment_plugin.placements[offset_name] = offset_name
+    end
+    
     visible_equipment_plugin.placement_camera[offset_name] = values_from_file.placement_camera
 end
 
