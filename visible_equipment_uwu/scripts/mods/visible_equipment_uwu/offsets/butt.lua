@@ -16,7 +16,7 @@ return {
                 rotation = vector3_box(-5, 0, 90),
             },
         },
-        placements = "hip_back",
+        placements = "butt",
         placement_camera = {
             position = vector3_box(-1.258, 2.639, 1.632),
             rotation = 3.5,
