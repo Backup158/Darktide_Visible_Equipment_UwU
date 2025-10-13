@@ -37,5 +37,5 @@ Placements may have a descriptive tag that is *italicized*. Explanations for the
 
 ## Glossary
 - *For pistols*: Placement is only added to weapons with "pistol" or "revolver" in the internal name
-- Sinister: Placement is designed for the weapon to be drawn with the left hand
-- xd: Placement requires "xd mode" to be enabled in the Mod Options to appear
+- *Sinister*: Placement is designed for the weapon to be drawn with the left hand
+- *xd*: Placement requires "xd mode" to be enabled in the Mod Options to appear
