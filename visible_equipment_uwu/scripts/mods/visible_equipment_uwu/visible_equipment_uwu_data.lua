@@ -1,7 +1,7 @@
 local mod = get_mod("visible_equipment_uwu")
 
 local finalWidgets = {}
-local widgetsToggleableToAdd = {"debug_mode", "xd_mode",}
+local widgetsToggleableToAdd = {"enable_debug_mode", "xd_mode",}
 
 -- Appends a toggleable option for a new widget
 local function addWidget(name)

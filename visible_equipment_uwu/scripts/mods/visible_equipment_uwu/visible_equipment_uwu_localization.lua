@@ -6,10 +6,10 @@ return {
 	mod_description = {
 		en = "Visible equipment positioning for unnecessarily horny people",
 	},
-	debug_mode = {
+	enable_debug_mode = {
 		en = "Debug Mode",
 	},
-	debug_mode_description = {
+	enable_debug_mode_description = {
 		en = "Puts extra messages in the console log for easier debugging"
 	},
 	xd_mode = {

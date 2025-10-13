@@ -1,7 +1,7 @@
 local mod = get_mod("visible_equipment_uwu")
 mod.version = "1.1.0"
-local debug_mode = mod:get("debug_mode")
-if debug_mode then mod:info("Debug mode activated. Pwepawe youw anus >:3") end
+local enable_debug_mode = mod:get("enable_debug_mode")
+if enable_debug_mode then mod:info("Debug mode activated. Pwepawe youw anus >:3") end
 
 -- ####################
 -- UTILITY/SETUP
@@ -52,7 +52,7 @@ for weapon_id, _ in pairs(WeaponTemplates) do
         table_insert(all_weapon_ids, weapon_id)
     end
 end
-if debug_mode then
+if enable_debug_mode then
     mod:echo("WEAPON TEMPLATES DUMPED! Don't forget to remove these!")
     table_dump(WeaponTemplates, "WeaponTemplatussy", 10)
     --table_dump(all_weapon_ids, "All weapons found", 10)
@@ -154,7 +154,7 @@ add_whole_offset_from_file_direct("chest_pistol", pistol_ids)
 add_whole_offset_from_file_direct("under_left_arm", pistol_ids)
 add_whole_offset_from_file_direct("under_right_arm", pistol_ids)
 
-if debug_mode then 
+if enable_debug_mode then 
     table_dump(visible_equipment_plugin.offsets, "BULGING OFFSETS", 10) 
 end
 
