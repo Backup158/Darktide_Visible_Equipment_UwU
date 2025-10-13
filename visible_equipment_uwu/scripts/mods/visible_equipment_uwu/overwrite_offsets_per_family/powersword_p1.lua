@@ -1,7 +1,7 @@
 local vector3_box = Vector3Box
 
 return {
-    butt_flip = {
+    uwu_butt_flip = {
         right = {
             position = vector3_box(0.007, 0.0, -0.0),
             rotation = vector3_box(140, 0, 0),
