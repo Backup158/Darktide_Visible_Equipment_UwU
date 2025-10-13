@@ -10,10 +10,14 @@ Adds weapon placements that I think are cool. Mostly tactical and shitposty.
 - Visible Equipment
     - Currently not on Nexus. WIP in the [Darktide Modders Discord](https://discord.gg/rKYWtaDx4D)
 
-https://dmf-docs.darkti.de/#/installing-mods
+### Installation 
+
+Install like any other mod. If you don't know how, here is a [guide for manual mod installation](https://dmf-docs.darkti.de/#/installing-mods)
+
+Load order does not matter.
 
 ## Weapon Placements
-Placements may have a descriptive tag that is *italicized*. Explanations on this are in the glossary.
+Placements may have a descriptive tag that is *italicized*. Explanations for these are in the glossary below.
 -  Chest Pistol, `chest_pistol`
     - On the right side of the upper chest, pointing away from the right shoulder
     - *For pistols*
