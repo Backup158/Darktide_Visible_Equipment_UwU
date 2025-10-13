@@ -28,6 +28,8 @@ local table_clone = table.clone
 local table_dump = table.dump
 local table_merge_recursive = table.merge_recursive
 
+local vector3_box = Vector3Box
+
 -- --------------------
 -- Mod Data
 -- --------------------
@@ -161,17 +163,26 @@ end
 -- RETURN: N/A just writes values
 -- ----------
 local function create_sinister_offset(original_offset_name)
-    for weapon_id, weapon_offset_table in ipairs(visible_equipment_plugin.offsets) do
-        -- if it has original offset, copy and modify
-        if visible_equipment_plugin.offsets[weapon_id][original_offset_name] then
-            local sinister_name = original_offset_name.."_sinister"
-            -- copy original offset
-            local temp_sinister = table_clone(visible_equipment_plugin.offsets[weapon_id][original_offset_name])
-            -- flip values
-            temp_sinister.position = temp_sinister.position * vector3_box(-1, 1, 1)
-            temp_sinister.rotation = temp_sinister.rotation * vector3_box(1, -1, 1)
+    for weapon_id, _ in pairs(visible_equipment_plugin.offsets) do
+        -- if original offset did not exist
+        if not visible_equipment_plugin.offsets[weapon_id][original_offset_name] then
+            mod:error("Cannot make sinister variant. Original does not exist: "..original_offset_name.." for "..weapon_id)
+            return
+        end
 
-            visible_equipment_plugin.offsets[weapon_id][sinister_name] = temp_sinister
+        -- if it has original offset, copy and modify
+        local sinister_name = original_offset_name.."_sinister"
+        --  copy original offset
+        visible_equipment_plugin.offsets[weapon_id][sinister_name] = table_clone(visible_equipment_plugin.offsets[weapon_id][original_offset_name])
+        --  flip values
+        for weapon_hand, _ in pairs(visible_equipment_plugin.offsets[weapon_id][original_offset_name]) do
+            visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].position = visible_equipment_plugin.offsets[weapon_id][original_offset_name][weapon_hand].position * vector3_box(-1, 1, 1)
+            visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].rotation = visible_equipment_plugin.offsets[weapon_id][original_offset_name][weapon_hand].rotation * vector3_box(1, -1, 1)
+        end
+
+        if visible_equipment_plugin.placement_camera[original_offset_name] then
+            visible_equipment_plugin.placements[sinister_name] = table_clone(visible_equipment_plugin.placements[original_offset_name])
+            visible_equipment_plugin.placement_camera[sinister_name] = table_clone(visible_equipment_plugin.placement_camera[original_offset_name])
         end
     end
 end
@@ -186,6 +197,9 @@ if mod:get("xd_mode") then
     add_whole_offset_from_file_direct("uwu_butt", all_weapon_ids)
     add_whole_offset_from_file_direct("uwu_butt_flip", all_weapon_ids)
 end
+
+add_whole_offset_from_file_direct("uwu_chest_middle", all_weapon_ids)
+create_sinister_offset("uwu_chest_middle")
 
 local pistol_ids = {}
 for _, weapon_id in ipairs(all_weapon_ids) do
