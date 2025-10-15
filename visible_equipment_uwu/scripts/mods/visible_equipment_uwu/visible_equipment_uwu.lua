@@ -165,25 +165,31 @@ end
 local function create_sinister_offset(original_offset_name)
     for weapon_id, _ in pairs(visible_equipment_plugin.offsets) do
         -- if original offset did not exist
-        if not visible_equipment_plugin.offsets[weapon_id][original_offset_name] then
+        if visible_equipment_plugin.offsets[weapon_id][original_offset_name] then
+            -- if it has original offset, copy and modify
+            local sinister_name = original_offset_name.."_sinister"
+            --  copy original offset
+            visible_equipment_plugin.offsets[weapon_id][sinister_name] = table_clone(visible_equipment_plugin.offsets[weapon_id][original_offset_name])
+            --  flip values
+            for weapon_hand, _ in pairs(visible_equipment_plugin.offsets[weapon_id][sinister_name]) do
+                --visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].position[1] = visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].position[1] * -1
+                --visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].rotation[2] = visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].rotation[2] * -1 
+
+               -- visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].position = Vector3.multiply_elements(visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].position, Vector3(-1, 1, 1))
+                --visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].rotation = Vector3.multiply_elements(visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].rotation, Vector3(1, -1, 1))
+            end
+            
+            if visible_equipment_plugin.placement_camera[original_offset_name] then
+                visible_equipment_plugin.placements[sinister_name] = {
+                    [sinister_name] = sinister_name
+                }
+                visible_equipment_plugin.placement_camera[sinister_name] = table_clone(visible_equipment_plugin.placement_camera[original_offset_name])
+            end
+        else
             mod:error("Cannot make sinister variant. Original does not exist: "..original_offset_name.." for "..weapon_id)
-            return
         end
 
-        -- if it has original offset, copy and modify
-        local sinister_name = original_offset_name.."_sinister"
-        --  copy original offset
-        visible_equipment_plugin.offsets[weapon_id][sinister_name] = table_clone(visible_equipment_plugin.offsets[weapon_id][original_offset_name])
-        --  flip values
-        for weapon_hand, _ in pairs(visible_equipment_plugin.offsets[weapon_id][original_offset_name]) do
-            visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].position = visible_equipment_plugin.offsets[weapon_id][original_offset_name][weapon_hand].position * vector3_box(-1, 1, 1)
-            visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].rotation = visible_equipment_plugin.offsets[weapon_id][original_offset_name][weapon_hand].rotation * vector3_box(1, -1, 1)
-        end
 
-        if visible_equipment_plugin.placement_camera[original_offset_name] then
-            visible_equipment_plugin.placements[sinister_name] = table_clone(visible_equipment_plugin.placements[original_offset_name])
-            visible_equipment_plugin.placement_camera[sinister_name] = table_clone(visible_equipment_plugin.placement_camera[original_offset_name])
-        end
     end
 end
 
@@ -198,6 +204,7 @@ if mod:get("xd_mode") then
     add_whole_offset_from_file_direct("uwu_butt_flip", all_weapon_ids)
 end
 
+--add_whole_offset_from_file_direct("zero", all_weapon_ids)
 add_whole_offset_from_file_direct("uwu_chest_middle", all_weapon_ids)
 create_sinister_offset("uwu_chest_middle")
 
