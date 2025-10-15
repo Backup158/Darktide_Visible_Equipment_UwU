@@ -28,7 +28,11 @@ local table_clone = table.clone
 local table_dump = table.dump
 local table_merge_recursive = table.merge_recursive
 
+local vector3 = Vector3
 local vector3_box = Vector3Box
+local quaternion = Quaternion
+local quaternion_to_euler_angles_xyz = quaternion.to_euler_angles_xyz
+local quaternion_from_euler_angles_xyz = quaternion.from_euler_angles_xyz
 
 -- --------------------
 -- Mod Data
@@ -61,6 +65,28 @@ local visible_equipment_plugin = {
     placements = { },
     placement_camera = { },
 }
+
+local quaternion_to_vector = function(quaternion)
+    local x, y, z = quaternion_to_euler_angles_xyz(quaternion)
+    return vector3(x, y, z)
+end
+local quaternion_from_vector = function(vector)
+    return quaternion_from_euler_angles_xyz(vector[1], vector[2], vector[3])
+end
+
+local function apply_two_dimensional_transformation_to_vector(vector_userdata, two_dimensional_array)
+    local vector_as_quaternion = quaternion_from_vector(vector_userdata)
+    -- if different lengths, error
+    if not #vector_as_quaternion == #two_dimensional_array then
+        mod:error("Arrays need to be the same length!")
+        return
+    end
+    for index, scalar in ipairs(two_dimensional_array) do
+        -- scalar = two_dimensional_array[index]
+        vector_as_quaternion[index] = vector_as_quaternion[index] * scalar
+    end
+    return quaternion_to_vector(vector_as_quaternion)
+end
 
 -- --------------------
 -- HOOKS
@@ -172,6 +198,7 @@ local function create_sinister_offset(original_offset_name)
             visible_equipment_plugin.offsets[weapon_id][sinister_name] = table_clone(visible_equipment_plugin.offsets[weapon_id][original_offset_name])
             --  flip values
             for weapon_hand, _ in pairs(visible_equipment_plugin.offsets[weapon_id][sinister_name]) do
+                visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].position = (apply_two_dimensional_transformation_to_vector(visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].position, Vector3(-1, 1, 1)) )
                 --visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].position[1] = visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].position[1] * -1
                 --visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].rotation[2] = visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].rotation[2] * -1 
 
