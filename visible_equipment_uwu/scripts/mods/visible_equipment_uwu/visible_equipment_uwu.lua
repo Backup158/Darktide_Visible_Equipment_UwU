@@ -31,7 +31,7 @@ local table_merge_recursive = table.merge_recursive
 local vector3 = Vector3
 local vector3_box = Vector3Box
 local vector3_to_elements = Vector3.to_elements
-local vector3_from_table = Vector3.from_table
+local vector3_from_array = Vector3.from_array
 local quaternion = Quaternion
 local quaternion_to_euler_angles_xyz = quaternion.to_euler_angles_xyz
 local quaternion_from_euler_angles_xyz = quaternion.from_euler_angles_xyz
@@ -78,7 +78,7 @@ end
 
 local function apply_two_dimensional_transformation_to_vector(vector_userdata, two_dimensional_array)
     local x, y, z = vector3_to_elements(vector_userdata)
-    local temp_table = {x, y, z}
+    local temp_array = {x, y, z}
     -- if different lengths, error
     if not 3 == #two_dimensional_array then
         mod:error("Arrays need to be the same length!")
@@ -87,9 +87,9 @@ local function apply_two_dimensional_transformation_to_vector(vector_userdata, t
     
     for index, scalar in ipairs(two_dimensional_array) do
         -- remember: scalar = two_dimensional_array[index]
-        temp_table[index] = temp_table[index] * scalar
+        temp_array[index] = temp_array[index] * scalar
     end
-    return vector3_from_table(temp_table)
+    return vector3_from_array(temp_array)
 end
 
 -- --------------------
