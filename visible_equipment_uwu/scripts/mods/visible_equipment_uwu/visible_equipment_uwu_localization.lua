@@ -10,7 +10,7 @@ return {
 		en = "Debug Mode",
 	},
 	enable_debug_mode_description = {
-		en = "Puts extra messages in the console log for easier debugging"
+		en = "Puts extra messages in the console log for easier debugging. (THIS WILL COMPLETELY FLOOD IT)"
 	},
 	xd_mode = {
 		en = "xd mode",
