@@ -1,5 +1,5 @@
 # Visible Equipment - Uprooted with Umbrage
-![Title image](docs/images/VisibleEquipmentUwUTitle.png)
+![Title image](images/VisibleEquipmentUwUTitle.png)
 
 Addon for the Standalone Visible Equipment mod for *Warhammer 40,000: Darktide*.
 
