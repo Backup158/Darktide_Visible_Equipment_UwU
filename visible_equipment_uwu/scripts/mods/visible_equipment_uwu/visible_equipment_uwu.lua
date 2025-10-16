@@ -234,11 +234,11 @@ local function create_offset_variant(original_offset_name, name_append, table_of
     end
 end
 
--- ----------
+-- -----
 -- Create Left-handed variant
 -- From an already generated offset, create a version suited for left handed use-- PARAM
 --  offset_to_copy; string; name of original offset, such as "uwu_butt"
--- ----------
+-- -----
 local function create_sinister_offset(original_offset_name)
     create_offset_variant(original_offset_name, "sinister", {
         position = {x = -1, y = 1, z = 1},
