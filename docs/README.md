@@ -1,4 +1,6 @@
 # Visible Equipment - Uprooted with Umbrage
+![Title image](docs/images/VisibleEquipmentUwUTitle.png)
+
 Addon for the Standalone Visible Equipment mod for *Warhammer 40,000: Darktide*.
 
 Adds weapon placements that I think are cool. Mostly tactical and shitposty. 
