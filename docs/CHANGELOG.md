@@ -33,7 +33,7 @@ v1.1.0
             - position flipped right-left (x)
             - rotation flipped across right-left and up-down (z and y, because fuck you)
 
-# some day idk
+# 2025-08-???
 v1.0.0
 
 - Generic locations for all weapons
