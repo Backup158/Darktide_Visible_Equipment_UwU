@@ -18,9 +18,13 @@ Load order does not matter.
 
 ## Weapon Placements
 Placements may have a descriptive tag that is *italicized*. Explanations for these are in the glossary below.
--  Chest Pistol, `chest_pistol`
+- Chest Pistol, `chest_pistol`
     - On the right side of the upper chest, pointing away from the right shoulder
     - *For pistols*
+- Chest Pistol (Sinister), `chest_pistol_sinister`
+    - On the upper chest, pointing away from the left shoulder
+    - *For pistols*
+    - *Sinister*
 - Shoulder Holster, `under_left_arm`
     - Under the left armpit, pointing to the back
     - *For pistols*
