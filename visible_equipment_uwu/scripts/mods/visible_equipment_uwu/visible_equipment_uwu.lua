@@ -193,36 +193,57 @@ local function add_whole_offset_from_file_direct(offset_name, table_of_weapons_t
 end
 
 -- ----------
--- Create Left-handed variant
--- From an already generated offset, create a version suited for left handed use
+-- Create Offset Variant
+-- From an already generated offset, create a version suited that's a bit different
 -- PARAM
---  offset_to_copy; string; such as "uwu_butt"
+--  offset_to_copy; string; name of original offset, such as "uwu_butt"
+--  name_append; string; suffix to add to original offset
+--  table_of_new_values; table of tables of ints; position and rotation transformations, if needed
+--      each transformation is labeled with x y z to maintain order
 -- RETURN: N/A just writes values
 -- ----------
-local function create_sinister_offset(original_offset_name)
+local function create_offset_variant(original_offset_name, name_append, table_of_new_values)
+    local name_append = name_append or "bitch_you_forgot_the_NAME"
+    
     for weapon_id, _ in pairs(visible_equipment_plugin.offsets) do
         -- if original offset did not exist
         if visible_equipment_plugin.offsets[weapon_id][original_offset_name] then
             -- if it has original offset, copy and modify
-            local sinister_name = original_offset_name.."_sinister"
+            local variant_name = original_offset_name.."_"..name_append
             --  copy original offset
-            visible_equipment_plugin.offsets[weapon_id][sinister_name] = table_clone(visible_equipment_plugin.offsets[weapon_id][original_offset_name])
+            visible_equipment_plugin.offsets[weapon_id][variant_name] = table_clone(visible_equipment_plugin.offsets[weapon_id][original_offset_name])
             --  flip values
-            for weapon_hand, _ in pairs(visible_equipment_plugin.offsets[weapon_id][sinister_name]) do
-                visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].position = apply_two_dimensional_transformation_to_vector(visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].position, {x = -1, y = 1, z = 1})
-                visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].rotation = apply_two_dimensional_transformation_to_vector(visible_equipment_plugin.offsets[weapon_id][sinister_name][weapon_hand].rotation, {x = 1, y = -1, z = -1})
+            for weapon_hand, _ in pairs(visible_equipment_plugin.offsets[weapon_id][variant_name]) do
+                if table_of_new_values.position then
+                    visible_equipment_plugin.offsets[weapon_id][variant_name][weapon_hand].position = apply_two_dimensional_transformation_to_vector(visible_equipment_plugin.offsets[weapon_id][variant_name][weapon_hand].position, table_of_new_values.position)
+                end
+                if table_of_new_values.rotation then
+                    visible_equipment_plugin.offsets[weapon_id][variant_name][weapon_hand].rotation = apply_two_dimensional_transformation_to_vector(visible_equipment_plugin.offsets[weapon_id][variant_name][weapon_hand].rotation, table_of_new_values.rotation)
+                end
             end
             
             if visible_equipment_plugin.placement_camera[original_offset_name] then
-                visible_equipment_plugin.placements[sinister_name] = {
-                    [sinister_name] = sinister_name
+                visible_equipment_plugin.placements[variant_name] = {
+                    [variant_name] = variant_name
                 }
-                visible_equipment_plugin.placement_camera[sinister_name] = table_clone(visible_equipment_plugin.placement_camera[original_offset_name])
+                visible_equipment_plugin.placement_camera[variant_name] = table_clone(visible_equipment_plugin.placement_camera[original_offset_name])
             end
         else
-            mod:error("Cannot make sinister variant. Original does not exist: "..original_offset_name.." for "..weapon_id)
+            mod:error("Cannot make "..name_append.." variant. Original does not exist: "..original_offset_name.." for "..weapon_id)
         end
     end
+end
+
+-- ----------
+-- Create Left-handed variant
+-- From an already generated offset, create a version suited for left handed use-- PARAM
+--  offset_to_copy; string; name of original offset, such as "uwu_butt"
+-- ----------
+local function create_sinister_offset(original_offset_name)
+    create_offset_variant(original_offset_name, "sinister", {
+        position = {x = -1, y = 1, z = 1},
+        rotation = {x = 1, y = -1, z = -1},
+    })
 end
 
 -- ########################################
