@@ -227,6 +227,12 @@ end
 --  offset_to_copy; string; name of original offset, such as "uwu_butt"
 -- -----
 local function create_sinister_offset(original_offset_name)
+    mod:add_global_localize_strings({
+    ["loc_ve_placement_"..original_offset_name] = {
+            en = Localize(original_offset_name).." (Sinister)",
+        }
+    })
+
     create_offset_variant(original_offset_name, "sinister", {
         position = {x = -1, y = 1, z = 1},
         rotation = {x = 1, y = -1, z = -1},
