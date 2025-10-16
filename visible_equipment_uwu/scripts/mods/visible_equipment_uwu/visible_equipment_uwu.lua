@@ -30,11 +30,6 @@ local table_merge_recursive = table.merge_recursive
 
 local vector3 = Vector3
 local vector3_box = Vector3Box
-local vector3_to_elements = Vector3.to_elements
-local vector3_from_table = Vector3.from_table
-local quaternion = Quaternion
-local quaternion_to_euler_angles_xyz = quaternion.to_euler_angles_xyz
-local quaternion_from_euler_angles_xyz = quaternion.from_euler_angles_xyz
 
 -- --------------------
 -- Mod Data
@@ -67,14 +62,6 @@ local visible_equipment_plugin = {
     placements = { },
     placement_camera = { },
 }
-
-local quaternion_to_vector = function(quaternion)
-    local x, y, z = quaternion_to_euler_angles_xyz(quaternion)
-    return vector3(x, y, z)
-end
-local quaternion_from_vector = function(vector)
-    return quaternion_from_euler_angles_xyz(vector[1], vector[2], vector[3])
-end
 
 -- ----------
 -- Apply 2D Transformation to Vector3Box
@@ -269,7 +256,7 @@ for _, weapon_id in ipairs(all_weapon_ids) do
 end
 add_whole_offset_from_file_direct("uwu_chest_pistol", pistol_ids)
 add_whole_offset_from_file_direct("uwu_under_left_arm", pistol_ids)
-add_whole_offset_from_file_direct("uwu_under_right_arm", pistol_ids)
+add_whole_offset_from_file_direct("uwu_under_right_arm", pistol_ids) -- because under_left_arm_sinister is so cursed
 
 if enable_debug_mode then 
     table_dump(visible_equipment_plugin, "BULGING OFFSETS AND POSITIONS", 10) 
