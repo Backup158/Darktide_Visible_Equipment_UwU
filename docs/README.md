@@ -28,14 +28,31 @@ Placements may have a descriptive tag that is *italicized*. Explanations for the
     - Under the right armpit, pointing to the back
     - *For pistols*
     - *Sinister*
+- Chest Middle, `chest_middle`
+    - On the stomach, facing down and away from the right shoulder
+    - Added to all weapons, but only really fits on ranged weapon (not staff)
 - Prison Pocket, `butt`
     - Up the butt
+    - only really fits on melee/staffs
     - *xd*
 - Prison Pocket (Flipped), `butt_flip`
     - Up the butt (flipped)
+    - only really fits on melee/staffs
     - *xd*
 
 ## Glossary
 - *For pistols*: Placement is only added to weapons with "pistol" or "revolver" in the internal name
 - *Sinister*: Placement is designed for the weapon to be drawn with the left hand
 - *xd*: Placement requires "xd mode" to be enabled in the Mod Options to appear
+
+## Known Issues
+- Positions are not localized
+    - think I just have to wait for the base mod to be updated, after `extended_weapon_customization` is done
+    - they'll use the `<code_names>` for now
+- Positions clip into body or float too far off
+    - Positions are set regardless of cosmetics equipped, so thicker jackets and such would clip, while slimmer clothes may make the weapons float
+    - Will likely make variants that stick out a bit more
+- Weapon position doesn't make sense at all
+    - mainly for the butt positions
+    - needs me to apply the fix to every gun and i'm not doing that right now
+    - also i didn't check anything for ogryn so lol
