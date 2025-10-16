@@ -216,7 +216,9 @@ local function create_offset_variant(original_offset_name, name_append, table_of
                 visible_equipment_plugin.placement_camera[variant_name] = table_clone(visible_equipment_plugin.placement_camera[original_offset_name])
             end
         else
-            mod:error("Cannot make "..name_append.." variant. Original does not exist: "..original_offset_name.." for "..weapon_id)
+            if enable_debug_mode then
+                mod:info("Cannot make "..name_append.." variant. Original does not exist: "..original_offset_name.." for "..weapon_id)
+            end
         end
     end
 end
