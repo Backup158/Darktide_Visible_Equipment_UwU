@@ -20,6 +20,6 @@ return {
     --placements = "hip_back",
     placement_camera = {
         position = vector3_box(-1.5, 3, 2),
-        rotation = 0.5,
+        rotation = 1.5,
     },
 }
