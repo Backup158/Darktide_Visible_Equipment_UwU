@@ -56,3 +56,5 @@ Placements may have a descriptive tag that is *italicized*. Explanations for the
     - mainly for the butt positions
     - needs me to apply the fix to every gun and i'm not doing that right now
     - also i didn't check anything for ogryn so lol
+- Camera previews are inaccurate (just the head)
+    - Yeah idk what's going on here atm
