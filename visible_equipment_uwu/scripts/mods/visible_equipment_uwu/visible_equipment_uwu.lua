@@ -76,6 +76,17 @@ local quaternion_from_vector = function(vector)
     return quaternion_from_euler_angles_xyz(vector[1], vector[2], vector[3])
 end
 
+-- ----------
+-- Apply 2D Transformation to Vector3Box
+-- DESC: given a vector3box, multiply it with the transformation given
+--  not just modifying the vector without returning because that affects the one it was cloned from
+--  maybe vectors are pointers being passed around?
+--  not using the vector3 functions becaus returning a vector3 doesn't work (just defaults to 0)
+-- PARAM:
+--      vector_userdata; Vector3Box; the position/rotation
+--      two_dimensional_array; table of numbers; like {x = 1, y = 2, z = 1}
+-- RETURN: Vector3Box
+-- ----------
 local function apply_two_dimensional_transformation_to_vector(vector_userdata, two_dimensional_array)
     -- if different lengths, error
     if not 3 == #two_dimensional_array then
@@ -83,14 +94,9 @@ local function apply_two_dimensional_transformation_to_vector(vector_userdata, t
         return
     end
 
-    local x, y, z = vector_userdata[1], vector_userdata[2], vector_userdata[3]
-    local temp_table = {
-        x = x * two_dimensional_array.x, 
-        y = y * two_dimensional_array.y,  
-        z = z * two_dimensional_array.z, 
-    }
-    
-    return vector3_box(temp_table.x, temp_table.y, temp_table.z)
+    return vector3_box(vector_userdata[1] * two_dimensional_array.x, 
+        vector_userdata[2] * two_dimensional_array.y, 
+        vector_userdata[3] * two_dimensional_array.z)
 end
 
 -- --------------------
