@@ -13,7 +13,7 @@ return {
         right = {
             node = "j_hips",
             position = vector3_box(0.02, 0.17, 0.25),
-            rotation = vector3_box(20, -40, 90),
+            rotation = vector3_box(-10, -40, 90),
         },
     },
     -- handled automatically
