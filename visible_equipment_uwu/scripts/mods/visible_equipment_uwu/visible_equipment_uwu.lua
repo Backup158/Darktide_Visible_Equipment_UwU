@@ -83,14 +83,14 @@ local function apply_two_dimensional_transformation_to_vector(vector_userdata, t
         return
     end
 
-    local x, y, z = vector3_to_elements(vector_userdata)
+    local x, y, z = vector_userdata[1], vector_userdata[2], vector_userdata[3]
     local temp_table = {
         x = x * two_dimensional_array.x, 
         y = y * two_dimensional_array.y,  
         z = z * two_dimensional_array.z, 
     }
     
-    return vector3_from_table(temp_table)
+    return vector3_box(temp_table.x, temp_table.y, temp_table.z)
 end
 
 -- --------------------
@@ -216,8 +216,6 @@ local function create_sinister_offset(original_offset_name)
         else
             mod:error("Cannot make sinister variant. Original does not exist: "..original_offset_name.." for "..weapon_id)
         end
-
-
     end
 end
 
