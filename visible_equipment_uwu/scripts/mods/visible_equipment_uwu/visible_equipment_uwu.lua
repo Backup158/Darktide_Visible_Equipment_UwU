@@ -291,7 +291,7 @@ end
 -- ########################################
 -- ***** OFFSETS: MANUAL OVERRIDES *****
 -- ########################################
-local families_that_need_overrides = { "powersword_p1", }
+local families_that_need_overrides = { "dual_stubpistols_p1", "powersword_p1", }
 for _, weapon_family in ipairs(families_that_need_overrides) do
     for slot, offset in pairs(open_mod_file("overwrite_offsets_per_family/"..weapon_family)) do
         overwrite_offset_slot_for_family(weapon_family, slot, offset)
