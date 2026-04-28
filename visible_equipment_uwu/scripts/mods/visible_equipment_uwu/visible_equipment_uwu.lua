@@ -251,7 +251,14 @@ if mod:get("xd_mode") then
     add_whole_offset_from_file_direct("uwu_butt", all_weapon_ids)
     add_whole_offset_from_file_direct("uwu_butt_flip", all_weapon_ids)
 end
-
+--[[
+"j_leftupleg",
+"j_rightupleg",
+"j_leftleg",
+"j_rightleg",
+"j_leftfoot",
+"j_rightfoot",
+]]
 --add_whole_offset_from_file_direct("zero", all_weapon_ids)
 add_whole_offset_from_file_direct("uwu_chest_middle", all_weapon_ids)
 create_sinister_offset("uwu_chest_middle")
@@ -266,6 +273,10 @@ add_whole_offset_from_file_direct("uwu_chest_pistol", pistol_ids)
 create_sinister_offset("uwu_chest_pistol")
 add_whole_offset_from_file_direct("uwu_under_left_arm", pistol_ids)
 add_whole_offset_from_file_direct("uwu_under_right_arm", pistol_ids) -- because under_left_arm_sinister is so cursed
+
+local knife_ids = {"combatknife_p1_m1", "combatknife_p1_m2"}
+add_whole_offset_from_file_direct("uwu_right_ankle", knife_ids)
+add_whole_offset_from_file_direct("uwu_right_ankle_inside", knife_ids)
 
 if enable_debug_mode then 
     table_dump(visible_equipment_plugin, "BULGING OFFSETS AND POSITIONS", 10) 
