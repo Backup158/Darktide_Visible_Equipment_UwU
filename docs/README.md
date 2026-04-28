@@ -56,11 +56,11 @@ Placements may have a descriptive tag that is *italicized*. Explanations for the
     - *For pistols*: 
         - `uwu_right_ankle_pistol`, `uwu_right_ankle_inside_pistol`
         - *Sinister*: `uwu_left_ankle_pistol`, `uwu_left_ankle_inside_pistol`
-        - Pistol grips facing the back
+        - Pistol grips facing the back, on the outside and on the inside of the leg
     - *For knives*: 
         - `uwu_right_ankle`, `uwu_right_ankle_inside`
         - *Sinister*: `uwu_left_ankle`, `uwu_left_ankle_inside`
-        - Blade facing down
+        - Blade facing down, on the outside and on the inside of the leg
 
 ## Glossary
 - *For pistols*: Placement is only added to weapons with "pistol" or "revolver" in the internal name
