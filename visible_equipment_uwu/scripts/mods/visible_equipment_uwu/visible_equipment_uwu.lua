@@ -285,11 +285,11 @@ for i = 1, #pistol_positions_solo do
     add_whole_offset_from_file_direct(pistol_positions_solo[i], pistol_ids)
 end
 
-local knife_ids = { }
+local knife_ids = {  }
 for i = 1, #all_weapon_ids do
     local weapon_id = all_weapon_ids[i]
     -- Blade is ogryn and those needs separate positioning
-    if (_string_find(weapon_id, "knife")) then
+    if (_string_find(weapon_id, "knife")) or (_string_find(weapon_id, "shivs")) then
         table_insert(knife_ids, weapon_id)
     end 
 end
