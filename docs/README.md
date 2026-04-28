@@ -10,7 +10,8 @@ Adds weapon placements that I think are cool. Mostly tactical and shitposty.
     - DML/DMF (see linked guide in installation)
     - Not played through cloud gaming services
 - Visible Equipment
-    - Currently not on Nexus. WIP in the [Darktide Modders Discord](https://discord.gg/rKYWtaDx4D)
+    - Currently not on Nexus. WIP in the [Darktide Modders Discord](https://discord.gg/rKYWtaDx4D), pinned in the `#weapon-customiation-mod` channel
+    - It does not require Extended Weapon Customization
 
 ### Installation 
 
