@@ -35,8 +35,8 @@ return {
     },
     uwu_under_right_arm = {
         left = {
-            position = vector3_box(-0.09, -0.044, 0.165),
-            rotation = vector3_box(-57, 79, 47),
+            position = vector3_box(-0.079, -0.095, -0.118),
+            rotation = vector3_box(-156, 76, 155),
         },
     },
     -- Ankle Pistol Holsters
