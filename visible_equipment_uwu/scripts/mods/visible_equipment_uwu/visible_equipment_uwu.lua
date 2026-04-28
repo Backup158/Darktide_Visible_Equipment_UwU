@@ -1,5 +1,5 @@
 local mod = get_mod("visible_equipment_uwu")
-mod.version = "1.1.0"
+mod.version = "1.2.0"
 local enable_debug_mode = mod:get("enable_debug_mode")
 if enable_debug_mode then mod:info("Debug mode activated. Pwepawe youw anus >:3") end
 
