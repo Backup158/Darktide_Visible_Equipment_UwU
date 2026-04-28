@@ -283,7 +283,13 @@ for i = 1, #pistol_positions_solo do
     add_whole_offset_from_file_direct(pistol_positions_solo[i], pistol_ids)
 end
 
-local knife_ids = {"combatknife_p1_m1", "combatknife_p1_m2"}
+local knife_ids = { }
+for _, weapon_id in ipairs(all_weapon_ids) do
+    -- Blade is ogryn and those needs separate positioning
+    if (_string_find(weapon_id, "knife")) then
+        table_insert(knife_ids, weapon_id)
+    end 
+end
 local knife_positions = { 
     "uwu_right_ankle", "uwu_right_ankle_inside", "uwu_left_ankle", "uwu_left_ankle_inside",
 }
