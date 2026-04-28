@@ -264,7 +264,8 @@ add_whole_offset_from_file_direct("uwu_chest_middle", all_weapon_ids)
 create_sinister_offset("uwu_chest_middle")
 
 local pistol_ids = {}
-for _, weapon_id in ipairs(all_weapon_ids) do
+for i = 1, #all_weapon_ids do
+    local weapon_id = all_weapon_ids[i]
     if (_string_find(weapon_id, "pistol")) or (_string_find(weapon_id, "revolver")) then
         table_insert(pistol_ids, weapon_id)
     end 
@@ -284,7 +285,8 @@ for i = 1, #pistol_positions_solo do
 end
 
 local knife_ids = { }
-for _, weapon_id in ipairs(all_weapon_ids) do
+for i = 1, #all_weapon_ids do
+    local weapon_id = all_weapon_ids[i]
     -- Blade is ogryn and those needs separate positioning
     if (_string_find(weapon_id, "knife")) then
         table_insert(knife_ids, weapon_id)
