@@ -4,7 +4,7 @@ local vector3_box = Vector3Box
 
 mod:add_global_localize_strings({
     loc_ve_placement_uwu_thigh_drop = {
-        en = "Drop Leg Holster",
+        en = "Thigh Drop Holster",
     }
 })
 
