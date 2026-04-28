@@ -277,6 +277,8 @@ add_whole_offset_from_file_direct("uwu_under_right_arm", pistol_ids) -- because 
 local knife_ids = {"combatknife_p1_m1", "combatknife_p1_m2"}
 add_whole_offset_from_file_direct("uwu_right_ankle", knife_ids)
 add_whole_offset_from_file_direct("uwu_right_ankle_inside", knife_ids)
+add_whole_offset_from_file_direct("uwu_left_ankle", knife_ids)
+add_whole_offset_from_file_direct("uwu_left_ankle_inside", knife_ids)
 
 if enable_debug_mode then 
     table_dump(visible_equipment_plugin, "BULGING OFFSETS AND POSITIONS", 10) 
