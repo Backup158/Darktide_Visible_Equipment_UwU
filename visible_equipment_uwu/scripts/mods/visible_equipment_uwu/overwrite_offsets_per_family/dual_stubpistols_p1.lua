@@ -26,6 +26,19 @@ return {
             rotation = vector3_box(161, 44, 100),
         },
     },
+    -- Shoulder Holsters
+    uwu_under_left_arm = {
+        left = {
+            position = vector3_box(-0.09, -0.044, 0.165),
+            rotation = vector3_box(-57, 79, 47),
+        },
+    },
+    uwu_under_right_arm = {
+        left = {
+            position = vector3_box(-0.09, -0.044, 0.165),
+            rotation = vector3_box(-57, 79, 47),
+        },
+    },
     -- Ankle Pistol Holsters
     uwu_right_ankle_pistol = {
         right = {
