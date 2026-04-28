@@ -269,22 +269,27 @@ for _, weapon_id in ipairs(all_weapon_ids) do
         table_insert(pistol_ids, weapon_id)
     end 
 end
-add_whole_offset_from_file_direct("uwu_chest_pistol", pistol_ids)
-create_sinister_offset("uwu_chest_pistol")
-add_whole_offset_from_file_direct("uwu_under_left_arm", pistol_ids)
-add_whole_offset_from_file_direct("uwu_under_right_arm", pistol_ids) -- because under_left_arm_sinister is so cursed
-add_whole_offset_from_file_direct("uwu_thigh_drop", pistol_ids)
-add_whole_offset_from_file_direct("uwu_thigh_drop_sinister", pistol_ids)
+local pistol_positions_with_sinister = { "uwu_chest_pistol", }
+for i = 1, #pistol_positions_with_sinister do
+    add_whole_offset_from_file_direct(pistol_positions_with_sinister[i], pistol_ids)
+    create_sinister_offset(pistol_positions_with_sinister[i])
+end
+local pistol_positions_solo = {
+    "uwu_under_left_arm", "uwu_under_right_arm", -- because under_left_arm_sinister is so cursed
+    "uwu_thigh_drop", "uwu_thigh_drop_sinister", -- it was easier to swap the nodes
+    "uwu_right_ankle_pistol", "uwu_right_ankle_inside_pistol", "uwu_left_ankle_pistol", "uwu_left_ankle_inside_pistol",
+}
+for i = 1, #pistol_positions_solo do
+    add_whole_offset_from_file_direct(pistol_positions_solo[i], pistol_ids)
+end
 
 local knife_ids = {"combatknife_p1_m1", "combatknife_p1_m2"}
-add_whole_offset_from_file_direct("uwu_right_ankle", knife_ids)
-add_whole_offset_from_file_direct("uwu_right_ankle_inside", knife_ids)
-add_whole_offset_from_file_direct("uwu_left_ankle", knife_ids)
-add_whole_offset_from_file_direct("uwu_left_ankle_inside", knife_ids)
-add_whole_offset_from_file_direct("uwu_right_ankle_pistol", pistol_ids)
-add_whole_offset_from_file_direct("uwu_right_ankle_inside_pistol", pistol_ids)
-add_whole_offset_from_file_direct("uwu_left_ankle_pistol", pistol_ids)
-add_whole_offset_from_file_direct("uwu_left_ankle_inside_pistol", pistol_ids)
+local knife_positions = { 
+    "uwu_right_ankle", "uwu_right_ankle_inside", "uwu_left_ankle", "uwu_left_ankle_inside",
+}
+for i = 1, #knife_positions do
+    add_whole_offset_from_file_direct(knife_positions[i], knife_ids)
+end
 
 if enable_debug_mode then 
     table_dump(visible_equipment_plugin, "uwu BULGING OFFSETS AND POSITIONS", 10) 
