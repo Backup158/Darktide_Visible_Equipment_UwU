@@ -157,7 +157,8 @@ local function add_whole_offset_from_file_direct(offset_name, table_of_weapons_t
 
     -- Copy offsets for EACH weapon
     --  uses a generic offset, which may be overwritten later
-    for _, weapon_id in ipairs(table_of_weapons_to_add_to) do
+    for i = 1, #table_of_weapons_to_add_to do
+        local weapon_id = table_of_weapons_to_add_to[i]
         -- Initializing the weapon's table if not done yet
         if not visible_equipment_plugin.offsets[weapon_id] then
             visible_equipment_plugin.offsets[weapon_id] = {}
