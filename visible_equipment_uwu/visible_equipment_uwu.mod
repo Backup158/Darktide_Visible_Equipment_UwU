@@ -8,5 +8,9 @@ return {
 			mod_localization = "visible_equipment_uwu/scripts/mods/visible_equipment_uwu/visible_equipment_uwu_localization",
 		})
 	end,
+	require = {
+		"visible_equipment",
+	},
+	version = "1.2.0",
 	packages = {},
 }
