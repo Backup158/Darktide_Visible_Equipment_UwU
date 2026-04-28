@@ -1,6 +1,32 @@
 local vector3_box = Vector3Box
 
 return {
+    -- Chest
+    uwu_chest_middle = {
+        left = {
+            position = vector3_box(-0.061, -0.127, -0.168),
+            rotation = vector3_box(7, 43, 72),
+        },
+    },
+    uwu_chest_middle_sinister = {
+        left = {
+            position = vector3_box(-0.105, -0.07, 0.158),
+            rotation = vector3_box(157, 57, 103),
+        },
+    },
+    uwu_chest_pistol = {
+        left = {
+            position = vector3_box(0.046, -0.168, -0.165),
+            rotation = vector3_box(-22, 51, 110),
+        },
+    },
+    uwu_chest_pistol_sinister = {
+        left = {
+            position = vector3_box(0.043, -0.105, 0.152),
+            rotation = vector3_box(161, 44, 100),
+        },
+    },
+    -- Ankle Pistol Holsters
     uwu_right_ankle_pistol = {
         right = {
             position = vector3_box(0.109, -0.311, 0.073),
