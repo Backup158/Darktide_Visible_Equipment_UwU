@@ -45,10 +45,27 @@ Placements may have a descriptive tag that is *italicized*. Explanations for the
     - Up the butt (flipped)
     - only really fits on melee/staffs
     - *xd*
+- Thigh Drop Holsters: `uwu_thigh_drop` 
+    - On right and left thighs respectively, pointing straight down
+    - *Same-side draw*
+    - *For pistols*
+    - *Sinister*: `uwu_thigh_drop_sinister`
+- Ankle Holsters
+    - *Same-side draw*
+    - *For pistols*: 
+        - `uwu_right_ankle_pistol`, `uwu_right_ankle_inside_pistol`
+        - *Sinister*: `uwu_left_ankle_pistol`, `uwu_left_ankle_inside_pistol`
+        - Pistol grips facing the back
+    - *For knives*: 
+        - `uwu_right_ankle`, `uwu_right_ankle_inside`
+        - *Sinister*: `uwu_left_ankle`, `uwu_left_ankle_inside`
+        - Blade facing down
 
 ## Glossary
 - *For pistols*: Placement is only added to weapons with "pistol" or "revolver" in the internal name
+- *For knives*: Placement is only added to wepaons with "knife" or "shivs" in the internal name
 - *Sinister*: Placement is designed for the weapon to be drawn with the left hand
+- *Same-side draw*: Placement is designed for the weapon to be drawn by the hand on the same side of the body, without crossing over
 - *xd*: Placement requires "xd mode" to be enabled in the Mod Options to appear
 
 ## Known Issues
