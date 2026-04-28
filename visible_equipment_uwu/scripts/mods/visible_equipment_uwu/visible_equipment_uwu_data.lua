@@ -14,8 +14,8 @@ local function addWidget(name)
 end
 
 -- Adds a widget for each one in the list of names
-for _, name in pairs(widgetsToggleableToAdd) do
-    addWidget(name)
+for i = 1,  #widgetsToggleableToAdd do
+    addWidget(widgetsToggleableToAdd[i])
 end
 
 return {
