@@ -1,3 +1,19 @@
+# 2026-04-27
+v1.2.0
+- Added support for knives
+    - These are just the Combat Blades
+    - Ogryn blades are too different to group them together
+    - Shivs will have details worked out later
+- Added placements
+    - Thigh Drop Holsters, `uwu_thigh_drop` and `uwu_thigh_drop_sinister`
+        - For pistols
+        - On right and left thighs respectively, pointing straight down
+    - Ankle Holsters
+        - For pistols: `uwu_right_ankle_pistol`, `uwu_right_ankle_inside_pistol`, `uwu_left_ankle_pistol`, `uwu_left_ankle_inside_pistol`
+        - For knives: `uwu_right_ankle`, `uwu_right_ankle_inside`, `uwu_left_ankle`, `uwu_left_ankle_inside`
+        - Blade facing down, pistol grips facing the back. Side indicates which leg it's on, with the implication that you're using the same arm to drop down and grab (not crossing)
+- Improved performance by refactoring array access from using ipairs to using numeric for-loops (it is so minute that nobody will notice)
+
 # 2025-10-15
 v1.1.0
 
