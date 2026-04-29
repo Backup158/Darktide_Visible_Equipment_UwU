@@ -177,7 +177,7 @@ local function add_whole_offset_from_file_direct(offset_name, table_of_weapons_t
         visible_equipment_plugin.placements[offset_name] = offset_name
     end
 
-    visible_equipment_plugin.placement_camera[offset_name] = values_from_file.placement_camera
+    visible_equipment_plugin.placement_camera[offset_name] = table_clone(values_from_file.placement_camera)
 end
 
 -- ----------
