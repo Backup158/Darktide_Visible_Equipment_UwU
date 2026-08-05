@@ -1,5 +1,5 @@
 local mod = get_mod("visible_equipment_uwu")
-mod.version = "1.2.0"
+mod.version = "1.3.0"
 local enable_debug_mode = mod:get("enable_debug_mode")
 if enable_debug_mode then mod:info("Debug mode activated. Pwepawe youw anus >:3") end
 
@@ -251,6 +251,8 @@ end
 if mod:get("xd_mode") then
     add_whole_offset_from_file_direct("uwu_butt", all_weapon_ids)
     add_whole_offset_from_file_direct("uwu_butt_flip", all_weapon_ids)
+    add_whole_offset_from_file_direct("uwu_forehead", all_weapon_ids)
+    add_whole_offset_from_file_direct("uwu_forehead_shrink", all_weapon_ids)
 end
 --[[
 "j_leftupleg",

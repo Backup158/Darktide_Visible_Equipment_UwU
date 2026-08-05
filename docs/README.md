@@ -21,28 +21,28 @@ Load order does not matter.
 
 ## Weapon Placements
 Placements may have a descriptive tag that is *italicized*. Explanations for these are in the glossary below.
-- Chest Pistol, `chest_pistol`
+- Chest Pistol: `uwu_chest_pistol`
     - On the right side of the upper chest, pointing away from the right shoulder
     - *For pistols*
-- Chest Pistol (Sinister), `chest_pistol_sinister`
+- Chest Pistol (Sinister): `uwu_chest_pistol_sinister`
     - On the upper chest, pointing away from the left shoulder
     - *For pistols*
     - *Sinister*
-- Shoulder Holster, `under_left_arm`
+- Shoulder Holster: `uwu_under_left_arm`
     - Under the left armpit, pointing to the back
     - *For pistols*
-- Shoulder Holster (Sinister), `under_right_arm`
+- Shoulder Holster (Sinister): `uwu_under_right_arm`
     - Under the right armpit, pointing to the back
     - *For pistols*
     - *Sinister*
-- Chest Middle, `chest_middle`
+- Chest Middle: `uwu_chest_middle`
     - On the stomach, facing down and away from the right shoulder
     - Added to all weapons, but only really fits on ranged weapon (not staff)
-- Prison Pocket, `butt`
+- Prison Pocket: `uwu_butt`
     - Up the butt
     - only really fits on melee/staffs
     - *xd*
-- Prison Pocket (Flipped), `butt_flip`
+- Prison Pocket (Flipped): `uwu_butt_flip`
     - Up the butt (flipped)
     - only really fits on melee/staffs
     - *xd*
@@ -61,6 +61,10 @@ Placements may have a descriptive tag that is *italicized*. Explanations for the
         - `uwu_right_ankle`, `uwu_right_ankle_inside`
         - *Sinister*: `uwu_left_ankle`, `uwu_left_ankle_inside`
         - Blade facing down, on the outside and on the inside of the leg
+- Forehead: `uwu_forehead`
+    - Weapon on forehead, with the left-hand weapon being behind the head
+    - Includes a variant where the weapons are half the size. Forehead (Shrink): `uwu_forehead_shrink`
+    - *xd*
 
 ## Glossary
 - *For pistols*: Placement is only added to weapons with "pistol" or "revolver" in the internal name
@@ -71,14 +75,16 @@ Placements may have a descriptive tag that is *italicized*. Explanations for the
 
 ## Known Issues
 - Positions are not localized
-    - think I just have to wait for the base mod to be updated, after `extended_weapon_customization` is done
-    - they'll use the `<code_names>` for now
+    - This requires the base mod to be updated, likely after `extended_weapon_customization` is done
+    - They'll use the `<code_names>` for now
 - Positions clip into body or float too far off
     - Positions are set regardless of cosmetics equipped, so thicker jackets and such would clip, while slimmer clothes may make the weapons float
     - Will likely make variants that stick out a bit more
 - Weapon position doesn't make sense at all
-    - mainly for the butt positions
-    - needs me to apply the fix to every gun and i'm not doing that right now
-    - also i didn't check anything for ogryn so lol
+    - Report the really egregious ones and I'll put them on the list
+    - Mainly for the `butt` positions
+    - Fixing this I'll have to add a check to every gun and I'm not doing ALL that right now
+    - Also I didn't check anything for Ogryn so lol
 - Camera previews are inaccurate (just the head)
     - Yeah idk what's going on here atm
+    - May just be a base mod issue

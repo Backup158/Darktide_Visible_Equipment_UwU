@@ -1,3 +1,9 @@
+# 1.3.0 - 2026-08-04
+## Added
+- `uwu_forehead` and `uwu_forehead_shrink` to all weapons in xd mode
+## Changed
+## Fixed
+
 # 2026-04-27
 v1.2.0
 - Added support for knives
