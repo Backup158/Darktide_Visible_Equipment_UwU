@@ -12,13 +12,13 @@ return {
     offsets = {
         right = {
             node = "j_head",
-            position = vector3_box(0.0, 0.05, 0.0),
-            rotation = vector3_box(0, 0, 90),
+            position = vector3_box(0.1, -0.1, 0.0),
+            rotation = vector3_box(90, 90, 0),
         },
         left = {
             node = "j_head",
-            position = vector3_box(0.0, -0.05, 0.0),
-            rotation = vector3_box(0, 0, 90),
+            position = vector3_box(0.1, 0.1, 0.0),
+            rotation = vector3_box(90, 90, 0),
         },
     },
     -- handled automatically
