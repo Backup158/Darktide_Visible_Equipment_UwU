@@ -28,6 +28,6 @@ jobs:
           filename: visible_equipment_uwu.zip
           display_name: "Visible Equipment - Uprooted with Umbrage (UwU)"
           description: "https://backup158.github.io/Darktide_Visible_Equipment_UwU/CHANGELOG"
-          changelog: "https://backup158.github.io/Darktide_Visible_Equipment_UwU/CHANGELOG"
+          # changelog: "https://backup158.github.io/Darktide_Visible_Equipment_UwU/CHANGELOG"
           version: ${{ github.event.release.tag_name || github.event.inputs.version }}
           update_mod_version: true
